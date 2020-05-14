@@ -78,8 +78,8 @@
           <div class="navbar-left">
             <button class="navbar-toggler" type="button">&#9776;</button>
             <a class="navbar-brand" href="../index.html">
-              <img class="logo-dark" src="../assets/img/logo-dark.png" alt="logo">
-              <img class="logo-light" src="../assets/img/logo-light.png" alt="logo">
+                <img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo">
+                <img class="logo-light" src="{{asset('img/logo/yenumcomlight.png')}}" alt="logo">
             </a>
           </div>
 
@@ -88,151 +88,38 @@
 
             <ul class="nav nav-navbar">
               <li class="nav-item">
-                <a class="nav-link" href="#">Main <span class="arrow"></span></a>
-                <ul class="nav">
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Projects <span class="arrow"></span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Tools<span class="arrow"></span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Projects <span class="arrow"></span></a>
-                  </li>
-
-                </ul>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pages <span class="arrow"></span></a>
-                <ul class="nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="../page/how-it-works.html">How it works</a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="../page/pricing.html">Pricing</a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Portfolio <span class="arrow"></span></a>
-                    <nav class="nav">
-                      <a class="nav-link" href="../page/portfolio.html">Potfolio listing</a>
-                      <a class="nav-link" href="../page/portfolio-single.html">Potfolio single</a>
-                    </nav>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Careers <span class="arrow"></span></a>
-                    <nav class="nav">
-                      <a class="nav-link" href="../page/career.html">Careers listing</a>
-                      <a class="nav-link" href="../page/career-single.html">Careers single</a>
-                    </nav>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Service <span class="arrow"></span></a>
-                    <nav class="nav">
-                      <a class="nav-link" href="../page/service-1.html">Service 1</a>
-                      <a class="nav-link" href="../page/service-2.html">Service 2</a>
-                    </nav>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">About <span class="arrow"></span></a>
-                    <nav class="nav">
-                      <a class="nav-link" href="../page/about-1.html">About 1</a>
-                      <a class="nav-link" href="../page/about-2.html">About 2</a>
-                      <a class="nav-link" href="../page/about-3.html">About 3</a>
-                    </nav>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Contact <span class="arrow"></span></a>
-                    <nav class="nav">
-                      <a class="nav-link" href="../page/contact-1.html">Contact 1</a>
-                      <a class="nav-link" href="../page/contact-2.html">Contact 2</a>
-                      <a class="nav-link" href="../page/contact-3.html">Contact 3</a>
-                    </nav>
-                  </li>
-
-                  <li class="nav-divider"></li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Extra <span class="arrow"></span></a>
-                    <nav class="nav">
-                      <a class="nav-link" href="../page/demo.html">Request demo</a>
-                      <a class="nav-link" href="../page/coming-soon.html">Coming soon</a>
-                      <a class="nav-link" href="../page/terms.html">Terms</a>
-                      <a class="nav-link" href="../page/error-404.html">Error 404</a>
-                    </nav>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">User <span class="arrow"></span></a>
-                    <nav class="nav">
-                      <a class="nav-link" href="../page/user-login.html">Login</a>
-                      <a class="nav-link" href="../page/user-register.html">Register</a>
-                      <a class="nav-link" href="../page/user-recover.html">Recover</a>
-                    </nav>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Docs <span class="arrow"></span></a>
-                    <nav class="nav">
-                      <a class="nav-link" href="../docs/index.html">Support center</a>
-                      <a class="nav-link" href="../docs/articles.html">Articles</a>
-                      <a class="nav-link" href="../docs/faq.html">FAQ</a>
-                    </nav>
-                  </li>
-                </ul>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Blog <span class="arrow"></span></a>
+                <a class="nav-link" href="#">Application <span class="arrow"></span></a>
                 <nav class="nav">
-                  <a class="nav-link" href="../blog/classic.html">Classic</a>
-                  <a class="nav-link active" href="../blog/grid.html">Grid</a>
-                  <a class="nav-link" href="../blog/list.html">List</a>
-                  <a class="nav-link" href="../blog/sidebar.html">Sidebar</a>
+                    <a class="nav-link" href="#">Mobile</a>
+                    <a class="nav-link" href="#">Web</a>
+                    <a class="nav-link" href="#">Game</span></a>
+                    <div class="nav-divider"></div>
+                    <a class="nav-link" href="#">Team Projects</a>
+                    <a class="nav-link" href="#">How I Built it</a>
+                </nav>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">Photography <span class="arrow"></span></a>
+                <nav class="nav">
+                    <a class="nav-link" href="#">Portrait</a>
+                    <a class="nav-link" href="#">Photo Manipulation</a>
+                    <a class="nav-link" href="#">Photo Retouch</a>
+                    <div class="nav-divider"></div>
+                    <a class="nav-link" href="#">How I Shot it</a>
+                    <a class="nav-link" href="#">How I Edited it</a>
+                </nav>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Video <span class="arrow"></span></a>
+                <nav class="nav">
+                  <a class="nav-link" href="#">Edit</a>
+                  <a class="nav-link" href="#">Vfx Edit</a>
+                  <a class="nav-link" href="#">Abstract</a>
                   <div class="nav-divider"></div>
-                  <a class="nav-link" href="../blog/post-1.html">Post 1</a>
-                  <a class="nav-link" href="../blog/post-2.html">Post 2</a>
-                </nav>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#">Shop <span class="arrow"></span></a>
-                <nav class="nav">
-                  <a class="nav-link" href="../shop/list.html">List</a>
-                  <a class="nav-link" href="../shop/item.html">Item</a>
-                  <a class="nav-link" href="../shop/cart.html">Cart</a>
-                  <a class="nav-link" href="../shop/checkout.html">Checkout</a>
-                </nav>
-              </li>
-
-              <li class="nav-item nav-mega">
-                <a class="nav-link" href="#">Blocks <span class="arrow"></span></a>
-                <nav class="nav px-lg-2 py-lg-4">
-                  <div class="container-fluid">
-                    <div class="row">
-                      <div class="col-lg">
-                        <nav class="nav flex-column">
-                          <a class="nav-link" href="../block/blog.html">Blog</a>
-                          <a class="nav-link" href="../block/career.html">Career</a>
-                          <a class="nav-link" href="../block/contact.html">Contact</a>
-                          <a class="nav-link" href="../block/content.html">Content</a>
-                          <a class="nav-link" href="../block/counter.html">Counter</a>
-                          <a class="nav-link" href="../block/cover.html">Cover</a>
-                          <a class="nav-link" href="../block/cta.html">Call to action</a>
-                          <a class="nav-link" href="../block/download.html">Download</a>
-                          <a class="nav-link" href="../block/explore.html">Explore</a>
-                          <a class="nav-link" href="../block/faq.html">FAQ</a>
-                        </nav>
-                      </div>
-                    </div>
-                  </div>
+                  <a class="nav-link" href="#">How i Shot it</a>
+                  <a class="nav-link" href="#">How i Edited it</a>
                 </nav>
               </li>
 
@@ -242,18 +129,22 @@
           <a class="btn btn-xs btn-round btn-success" href="#">Buy Now</a>
 
         </div>
-      </nav><!-- /.navbar -->
+    </nav><!-- /.navbar -->
 
 
       <!-- Header -->
-      <header class="header text-center text-white" style="background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);">
-        <div class="container">
+      <header class="header text-white" style="background-image: url({{asset('img/bg/officialyenum.jpg')}})" data-overlay="8">
+        <div class="container text-center">
 
           <div class="row">
-            <div class="col-md-8 mx-auto">
+            <div class="col-lg-8 mx-auto">
 
-              <h1>Latest Blog Posts</h1>
-              <p class="lead-2 opacity-90 mt-6">Read and get updated on how we progress</p>
+              <h1>Yenum is <span class="text-primary" data-typing="A Developer, A Photograper , An Editor, A Vibe!!!"></span></h1>
+              <p class="lead-2 mt-5">“Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live”</p>
+              <P> -- JOHN WOODS -- </P>
+              <hr class="w-60px my-7">
+
+              <a class="btn btn-lg btn-round btn-white" href="#">Explore my Projects</a>
 
             </div>
           </div>
@@ -265,88 +156,147 @@
       <!-- Main Content -->
       <main class="main-content">
 
-        <section class="section bg-gray">
+
+
+        <!--
+        |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+        | Portfolio
+        |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+        !-->
+        <section class="section overflow-hidden">
           <div class="container">
 
-            <div class="row gap-y">
+            <div data-provide="shuffle">
+              <ul class="nav nav-center nav-bold nav-uppercase nav-slash mb-7" data-shuffle="filter">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#" data-shuffle="button">All</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-shuffle="button" data-group="applications">Applications</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-shuffle="button" data-group="photographs">Photographs</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-shuffle="button" data-group="videos">Videos</a>
+                </li>
+              </ul>
 
-              <div class="col-md-6 col-lg-4">
-                <div class="card d-block border hover-shadow-6 mb-6">
-                  <a href="#"><img class="card-img-top" src="../assets/img/thumb/1.jpg" alt="Card image cap"></a>
-                  <div class="p-6 text-center">
-                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">News</a></p>
-                    <h5 class="mb-0"><a class="text-dark" href="#">We relocated our office to a new designed garage</a></h5>
-                  </div>
+
+              <div class="row gap-y gap-2" data-shuffle="list">
+
+                <div class="col-6 col-lg-3" data-shuffle="item" data-groups="applications,videos">
+                  <a class="portfolio-1" href="portfolio-single.html">
+                    <img src="{{asset('img/projects/awc-logo.jpg')}}" alt="screenshot">
+                    <div class="portfolio-detail">
+                      <h5>Afterwork Chills Website</h5>
+                      <p>Applications,Videos</p>
+                    </div>
+                  </a>
                 </div>
-              </div>
 
 
-              <div class="col-md-6 col-lg-4">
-                <div class="card d-block border hover-shadow-6 mb-6">
-                  <a href="#"><img class="card-img-top" src="../assets/img/thumb/2.jpg" alt="Card image cap"></a>
-                  <div class="p-6 text-center">
-                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Marketing</a></p>
-                    <h5 class="mb-0"><a class="text-dark" href="#">Top 5 brilliant content marketing strategies</a></h5>
-                  </div>
+                <div class="col-6 col-lg-3" data-shuffle="item" data-groups="photographs">
+                  <a class="portfolio-1" href="portfolio-single.html">
+                    <img src="{{asset('img/bg/chuckymagic.jpg')}}" alt="screenshot">
+                    <div class="portfolio-detail">
+                      <h5>Ligthning God Look Edit</h5>
+                      <p>Photographs</p>
+                    </div>
+                  </a>
                 </div>
-              </div>
 
 
-              <div class="col-md-6 col-lg-4">
-                <div class="card d-block border hover-shadow-6 mb-6">
-                  <a href="#"><img class="card-img-top" src="../assets/img/thumb/3.jpg" alt="Card image cap"></a>
-                  <div class="p-6 text-center">
-                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Design</a></p>
-                    <h5 class="mb-0"><a class="text-dark" href="#">Best practices for minimalist design with example</a></h5>
-                  </div>
+                <div class="col-6 col-lg-3" data-shuffle="item" data-groups="photographs">
+                  <a class="portfolio-1" href="portfolio-single.html">
+                    <img src="{{asset('img/categories/photography.jpeg')}}" alt="screenshot">
+                    <div class="portfolio-detail">
+                      <h5>T-shirt</h5>
+                      <p>Photographs</p>
+                    </div>
+                  </a>
                 </div>
-              </div>
 
 
-              <div class="col-md-6 col-lg-4">
-                <div class="card d-block border hover-shadow-6 mb-6">
-                  <a href="#"><img class="card-img-top" src="../assets/img/thumb/4.jpg" alt="Card image cap"></a>
-                  <div class="p-6 text-center">
-                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Hiring</a></p>
-                    <h5 class="mb-0"><a class="text-dark" href="#">Congratulate and thank to Maryam for joining our team</a></h5>
-                  </div>
+                <div class="col-6 col-lg-3" data-shuffle="item" data-groups="photographs">
+                  <a class="portfolio-1" href="portfolio-single.html">
+                    <img src="{{asset('img/categories/photography.jpeg')}}" alt="screenshot">
+                    <div class="portfolio-detail">
+                      <h5>Coffee</h5>
+                      <p>Photographs</p>
+                    </div>
+                  </a>
                 </div>
-              </div>
 
 
-              <div class="col-md-6 col-lg-4">
-                <div class="card d-block border hover-shadow-6 mb-6">
-                  <a href="#"><img class="card-img-top" src="../assets/img/thumb/5.jpg" alt="Card image cap"></a>
-                  <div class="p-6 text-center">
-                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Product</a></p>
-                    <h5 class="mb-0"><a class="text-dark" href="#">New published books to read by a product designer</a></h5>
-                  </div>
+                <div class="col-6 col-lg-3" data-shuffle="item" data-groups="applications">
+                  <a class="portfolio-1" href="portfolio-single.html">
+                    <img src="{{asset('img/categories/game.jpeg')}}" alt="screenshot">
+                    <div class="portfolio-detail">
+                      <h5>Magic Switch</h5>
+                      <p>Application</p>
+                    </div>
+                  </a>
                 </div>
-              </div>
 
 
-              <div class="col-md-6 col-lg-4">
-                <div class="card d-block border hover-shadow-6 mb-6">
-                  <a href="#"><img class="card-img-top" src="../assets/img/thumb/6.jpg" alt="Card image cap"></a>
-                  <div class="p-6 text-center">
-                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Management</a></p>
-                    <h5 class="mb-0"><a class="text-dark" href="#">This is why it's time to ditch dress codes at work</a></h5>
-                  </div>
+                <div class="col-6 col-lg-3" data-shuffle="item" data-groups="videos">
+                  <a class="portfolio-1" href="portfolio-single.html">
+                    <img src="{{asset('img/categories/videoedit.jpeg')}}" alt="screenshot">
+                    <div class="portfolio-detail">
+                      <h5>Visual is The Future</h5>
+                      <p>Video</p>
+                    </div>
+                  </a>
                 </div>
-              </div>
 
+
+                <div class="col-6 col-lg-3" data-shuffle="item" data-groups="application">
+                  <a class="portfolio-1" href="#">
+                    <img src="{{asset('img/categories/game-2.jpeg')}}" alt="screenshot">
+                    <div class="portfolio-detail">
+                      <h5>Elixir Platformer Game</h5>
+                      <p>Application</p>
+                    </div>
+                  </a>
+                </div>
+
+
+                <div class="col-6 col-lg-3" data-shuffle="item" data-groups="applications">
+                  <a class="portfolio-1" href="#">
+                    <img src="{{asset('img/categories/code.jpeg')}}" alt="screenshot">
+                    <div class="portfolio-detail">
+                      <h5>Magazine</h5>
+                      <p>Applications</p>
+                    </div>
+                  </a>
+                </div>
+
+              </div>
             </div>
 
-
-            <nav class="flexbox mt-6">
-              <a class="btn btn-white disabled"><i class="ti-arrow-left fs-9 mr-2"></i> Newer</a>
-              <a class="btn btn-white" href="#">Older <i class="ti-arrow-right fs-9 ml-2"></i></a>
-            </nav>
 
           </div>
         </section>
 
-      </main>
+
+
+        <!--
+        |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+        | Get a Quote
+        |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+        !-->
+        <section class="section bg-gray text-center">
+
+          <h2 class="mb-6">Get a Quote</h2>
+          <p class="lead text-muted">We’ve completed more than 100+ project for our amazing clients, if you interested?</p>
+          <hr class="w-50px">
+          <a class="btn btn-lg btn-round btn-success" href="#">Design your site now</a>
+
+        </section>
+
+
+      </main><!-- /.main-content -->
 
 
       <!-- Footer -->
@@ -355,7 +305,7 @@
           <div class="row gap-y align-items-center">
 
             <div class="col-6 col-lg-3">
-              <a href="../index.html"><img src="../assets/img/logo-dark.png" alt="logo"></a>
+                <a href="{{route('home')}}"><img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo"></a>
             </div>
 
             <div class="col-6 col-lg-3 text-right order-lg-last">
@@ -369,11 +319,9 @@
 
             <div class="col-lg-6">
               <div class="nav nav-bold nav-uppercase nav-trim justify-content-lg-center">
-                <a class="nav-link" href="../uikit/index.html">Elements</a>
-                <a class="nav-link" href="../block/index.html">Blocks</a>
-                <a class="nav-link" href="../page/about-1.html">About</a>
-                <a class="nav-link" href="../blog/grid.html">Blog</a>
-                <a class="nav-link" href="../page/contact-1.html">Contact</a>
+                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="#">Articles</a>
+                <a class="nav-link" href="#">Contact</a>
               </div>
             </div>
 

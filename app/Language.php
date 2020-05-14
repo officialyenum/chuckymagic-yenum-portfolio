@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Language extends Model
 {
     protected $fillable = ['image','name'];
 
