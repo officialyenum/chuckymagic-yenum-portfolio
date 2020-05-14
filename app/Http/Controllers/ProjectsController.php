@@ -51,6 +51,7 @@ class ProjectsController extends Controller
      */
     public function store(CreateProjectRequest $request)
     {
+        dd($request->content);
         // upload the image
         //$extension = $request->image->extension();
         //$image = Storage::putFileAs('projects', $request->image, time().'.'.$extension);
@@ -63,27 +64,33 @@ class ProjectsController extends Controller
         //set Image Visibility public
         //Storage::disk('s3')->setVisibility($image,'public');
         // create the post
-        $post = Post::Create([
+        $project = Project::Create([
             'title' => $request->title,
             'description'=> $request->description,
             'content' => $request->content,
             'published_at' => $request->published_at,
             'category_id' => $request->category,
             'user_id' => auth()->user()->id,
-            'github_url'=> $request->github,
-            'playstore_url'=> $request->playstore,
-            'appstore_url'=> $request->appstore,
-            'web_url'=> $request->web,
+            'github_url'=> $request->github_url,
+            'playstore_url'=> $request->playstore_url,
+            'appstore_url'=> $request->appstore_url,
+            'web_url'=> $request->web_url,
             'image' => basename($image),
             'imageUrl' => Storage::disk('s3')->url($image)
         ]);
 
+        if ($request->sub_categories) {
+            $project->subcategories()->attach($request->subcategories);
+        }
         if ($request->tags) {
-            $post->tags()->attach($request->tags);
+            $project->tags()->attach($request->tags);
+        }
+        if ($request->languages) {
+            $project->languages()->attach($request->languages);
         }
 
         // flash the message
-        session()->flash('success', 'Post created successfully');
+        session()->flash('success', 'Project created successfully');
 
         // redirect the user
         return redirect(route('projects.index'));
@@ -185,7 +192,7 @@ class ProjectsController extends Controller
      */
     public function trashed()
     {
-        $trashed = Post::onlyTrashed()->get();
+        $trashed = Project::onlyTrashed()->get();
 
         return view('projects.index')->with('projects',$trashed);
     }

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Mockery\Matcher\Subset;
 
 class Category extends Model
 {
@@ -13,8 +14,13 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
-    public function subCategories()
+    public function subcategories()
     {
         return $this->belongsToMany(SubCategory::class);
+    }
+
+    public function hasSubcategory($subCategoryId)
+    {
+        return in_array($subCategoryId, $this->subcategories->pluck('id')->toArray());
     }
 }

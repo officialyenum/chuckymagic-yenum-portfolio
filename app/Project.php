@@ -55,9 +55,9 @@ class Project extends Model
      *
      */
 
-    public function hasSubCategory($tagId)
+    public function hasSubcategory($subCategoryId)
     {
-        return in_array($tagId, $this->tags->pluck('id')->toArray());
+        return in_array($subCategoryId, $this->subcategories->pluck('id')->toArray());
     }
 
     /**
@@ -67,9 +67,9 @@ class Project extends Model
      *
      */
 
-    public function hasLanguage($tagId)
+    public function hasLanguage($languageId)
     {
-        return in_array($tagId, $this->tags->pluck('id')->toArray());
+        return in_array($languageId, $this->tags->pluck('id')->toArray());
     }
 
     public function user()
@@ -91,6 +91,6 @@ class Project extends Model
     public function userProject()
     {
         $userID = Auth::user();
-        return $this->post->where('user_id','Like', "%{$userID}%");
+        return $this->project->where('user_id','Like', "%{$userID}%");
     }
 }

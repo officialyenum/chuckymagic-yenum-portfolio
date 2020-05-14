@@ -14,9 +14,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    @yield('css')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/page.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('/css/style.css')}}" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+
 </head>
 <body>
     <div id="app">
@@ -72,13 +74,68 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="{{route('projects.create')}}" style="width: 100%;" class="btn btn-info my-2 text-white">Create Project</a>
+                        <div class="card">
+                            <div class="card-header">
+                                MENU
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <a class="btn btn-info text-white btn-block"  href="{{ route('projects.index')}}">
+                                            Projects
+                                        </a>
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <a class="btn btn-info text-white btn-block" href={{ route('categories.index') }}>
+                                            Categories
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a class="btn btn-info text-white btn-block" href="{{ route('sub-categories.index')}}">
+                                            Sub Categories
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a class="btn btn-info text-white btn-block" href="{{ route('tags.index')}}">
+                                            FrameWorks And IDE
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a class="btn btn-info text-white btn-block" href="{{ route('languages.index')}}">
+                                            Languages
+                                        </a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a class="btn btn-info text-white btn-block" href="{{ route('trashed-projects.index')}}">
+                                            Trashed Projects
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
-
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
+    <!-- Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{asset('/js/page.min.js')}}"></script>
-    <script src="{{asset('/js/script.js')}}"></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
+    @yield('scripts')
 </body>
 </html>
