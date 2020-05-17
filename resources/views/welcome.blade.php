@@ -77,7 +77,7 @@
 
           <div class="navbar-left">
             <button class="navbar-toggler" type="button">&#9776;</button>
-            <a class="navbar-brand" href="../index.html">
+          <a class="navbar-brand" href="{{route('welcome')}}">
                 <img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo">
                 <img class="logo-light" src="{{asset('img/logo/yenumcomlight.png')}}" alt="logo">
             </a>
@@ -93,6 +93,7 @@
                     <a class="nav-link" href="#">Mobile</a>
                     <a class="nav-link" href="#">Web</a>
                     <a class="nav-link" href="#">Game</span></a>
+                    <a class="nav-link" href="{{ route('games.index')}}">Web Game</span></a>
                     <div class="nav-divider"></div>
                     <a class="nav-link" href="#">Team Projects</a>
                     <a class="nav-link" href="#">How I Built it</a>
@@ -126,7 +127,7 @@
             </ul>
           </section>
 
-          <a class="btn btn-xs btn-round btn-success" href="#">Buy Now</a>
+          <a class="btn btn-xs btn-round btn-success" href="{{ route('games.index')}}">Play Now</a>
 
         </div>
     </nav><!-- /.navbar -->

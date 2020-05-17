@@ -1,0 +1,91 @@
+.hero-image {
+    background-image: url(/img/bg/gameCanvas.jpg); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: auto; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+  }
+
+.hideButton{
+    display: none;
+}
+
+.score {
+    display: inline-block;
+}
+
+.cCard {
+    position: absolute;
+    left: 0;
+    top: 150px;
+    display: inline-block;
+    margin: 5px 0;
+    padding: 7px;
+    height: 135px;
+    width: 105px;
+    background-color: whitesmoke;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 5px #333;
+}
+
+.warCard {
+    display: block;
+    margin: auto;
+    padding: 7px;
+    height: 100px;
+    width: 70px;
+    margin-top: 10px;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 5px #333;
+}
+
+.cbig {
+    font-size: 1.3em;
+    text-align: center;
+    line-height: 80px;
+    margin: auto;
+    display: block;
+}
+
+.cred{
+    color: red;
+}
+
+.ctiny{
+    display: block;
+    text-align: start;
+    font-size: 0.3em;
+    line-height: 8px;
+    vertical-align: top;
+}
+
+.players {
+    display: inline-block;
+    width: 200px;
+    min-height: 400px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 2em;
+    border: 1px solid #ddd;
+}
+
+.stat {
+    font-size: 0.5em;
+    font-style: italic;
+    margin: 10px;
+    font: menu;
+}
+
+.gameplay {
+    background-color: lightgreen;
+}
+
+.message {
+    font-size: 1.3em;
+    font-weight: 500px;
+    padding: 10px;
+}
