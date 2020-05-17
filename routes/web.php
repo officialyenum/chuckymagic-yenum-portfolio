@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('categories', 'CategoriesController');
-Route::resource('sub-categories', 'SubCategoriesController');
+Route::resource('subcategories', 'SubCategoriesController');
 Route::resource('languages', 'LanguagesController');
 Route::resource('projects', 'ProjectsController');
 Route::get('trashed-project', 'ProjectsController@trashed')->name('trashed-projects.index');

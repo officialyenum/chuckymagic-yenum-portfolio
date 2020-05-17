@@ -96,7 +96,7 @@
                                         </a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a class="btn btn-info text-white btn-block" href="{{ route('sub-categories.index')}}">
+                                        <a class="btn btn-info text-white btn-block" href="{{ route('subcategories.index')}}">
                                             Sub Categories
                                         </a>
                                     </li>

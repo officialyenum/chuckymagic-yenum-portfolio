@@ -24,7 +24,7 @@ class UpdateLanguageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-        ];
+            'name' => 'required|unique:languages'
+         ];
     }
 }

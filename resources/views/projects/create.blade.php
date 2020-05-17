@@ -64,7 +64,7 @@
                 <label for="published_at">Published At</label>
                 <input type="text" class="form-control" name="published_at" id="published_at" value="{{ isset($post) ? $post->published_at : ''}}">
             </div>
-            @if (isset($post))
+            @if (isset($project))
                 <div class="form-group">
                 <img src="{{ asset($project->image)}}" alt="image" width="100%">
                 </div>

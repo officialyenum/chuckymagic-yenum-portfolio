@@ -23,7 +23,7 @@ class ProjectsTableSeeder extends Seeder
             'name' => 'Application'
         ]);
         $category2 = Category::create([
-            'image' => 'img/categories/photograpy.jpeg',
+            'image' => 'img/categories/photography.jpeg',
             'name' => 'Photography'
         ]);
         $category3 = Category::create([
@@ -33,17 +33,22 @@ class ProjectsTableSeeder extends Seeder
 
         $subCategory1 = SubCategory::create([
             'image' => 'img/categories/game.jpeg',
-            'name' => 'Game App'
+            'name' => 'Game'
         ]);
 
         $subCategory2 = SubCategory::create([
             'image' => 'img/categories/code.jpeg',
-            'name' => 'Mobile App'
+            'name' => 'Mobile'
         ]);
 
         $subCategory3 = SubCategory::create([
             'image' => 'img/categories/code.jpeg',
-            'name' => 'Web App'
+            'name' => 'Web'
+        ]);
+
+        $subCategory4 = SubCategory::create([
+            'image' => 'img/categories/code.jpeg',
+            'name' => 'Portrait'
         ]);
 
         $project1 = $user->projects()->create([
@@ -101,7 +106,7 @@ class ProjectsTableSeeder extends Seeder
         ]);
 
         $tag7 = Tag::create([
-            'image' => 'img/tags/flutter.jpeg',
+            'image' => 'img/tags/flutter.png',
             'name' => 'Flutter'
         ]);
 
@@ -149,7 +154,7 @@ class ProjectsTableSeeder extends Seeder
         ]);
 
         $language9 = Language::create([
-            'image' => 'img/tags/javascript.jpeg',
+            'image' => 'img/tags/javascript.png',
             'name' => 'jQuery'
         ]);
 

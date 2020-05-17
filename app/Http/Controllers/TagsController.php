@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Tags\CreateTagRequest;
+use App\Http\Requests\Tags\UpdateTagRequest;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class TagsController extends Controller
@@ -13,7 +16,7 @@ class TagsController extends Controller
      */
     public function index()
     {
-        //
+        return view('tags.index')->with('tags', Tag::all());
     }
 
     /**
@@ -23,7 +26,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-        //
+        return view('tags.create');
     }
 
     /**
@@ -32,9 +35,24 @@ class TagsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTagRequest $request)
     {
-        //
+        dd($request->content);
+        // upload the image
+        //$extension = $request->image->extension();
+        //$image = Storage::putFileAs('projects', $request->image, time().'.'.$extension);
+        $image = $request->file('image')->store(
+            'projects',
+            's3'
+        );
+        Tag::create([
+            'image' => $image,
+            'name' => $request->name
+        ]);
+
+        session()->flash('success', 'Tag Created Successfully');
+
+        return redirect(route('tags.index'));
     }
 
     /**
@@ -54,9 +72,9 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        //
+        return view('tags.create')->with('tag', $tag);
     }
 
     /**
@@ -66,9 +84,20 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTagRequest $request, Tag $tag)
     {
-        //
+        //method 1
+        //$category->name = $request->name;
+        //$category->save();
+
+        //method 2
+        $tag->update([
+            'name' => $request->name
+        ]);
+
+        session()->flash('success', 'Tag Updated Successfully');
+
+        return redirect(route('tags.index'));
     }
 
     /**
@@ -77,8 +106,17 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        //
+        if ($tag->projects->count() > 0) {
+            session()->flash('error', 'Tag cannot be deleted because it has some projects');
+
+            return redirect()->back();
+        }
+        $tag->delete();
+
+        session()->flash('success', 'Tag deleted sucessfully');
+
+        return redirect(route('tags.index'));
     }
 }

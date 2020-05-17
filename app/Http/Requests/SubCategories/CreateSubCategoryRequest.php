@@ -24,7 +24,8 @@ class CreateSubCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'image' => 'required|image|mimes:png,jpg,jpeg,gif|max:1280',
+            'name' => 'required|unique:subcategories'
         ];
     }
 }

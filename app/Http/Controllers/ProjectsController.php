@@ -11,6 +11,7 @@ use App\SubCategory;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectsController extends Controller
 {
@@ -51,7 +52,7 @@ class ProjectsController extends Controller
      */
     public function store(CreateProjectRequest $request)
     {
-        dd($request->content);
+        //dd($request->file('image')->store('projects'));
         // upload the image
         //$extension = $request->image->extension();
         //$image = Storage::putFileAs('projects', $request->image, time().'.'.$extension);
@@ -75,7 +76,7 @@ class ProjectsController extends Controller
             'playstore_url'=> $request->playstore_url,
             'appstore_url'=> $request->appstore_url,
             'web_url'=> $request->web_url,
-            'image' => basename($image),
+            'image' => $image,
             'imageUrl' => Storage::disk('s3')->url($image)
         ]);
 
@@ -148,6 +149,12 @@ class ProjectsController extends Controller
 
         if ($request->tags) {
             $project->tags()->sync($request->tags);
+        }
+        if ($request->sub_categories) {
+            $project->subcategories()->sync($request->subcategories);
+        }
+        if ($request->languages) {
+            $project->languages()->sync($request->languages);
         }
 
         //update data attributes
