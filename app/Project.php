@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Project extends Model
 {
@@ -12,7 +13,10 @@ class Project extends Model
 
     public function deleteImage()
     {
-        Storage::disk('s3')->delete($this->image);
+        //for local storage
+        Storage::delete($this->image);
+        //for amazon s3 storage
+        //Storage::disk('s3')->delete($this->image);
 
     }
 
