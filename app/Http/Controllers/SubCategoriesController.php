@@ -16,7 +16,8 @@ class SubCategoriesController extends Controller
      */
     public function index()
     {
-        return view('subcategories.index')->with('subcategories', SubCategory::all());
+        return view('subcategories.index')
+            ->with('subcategories', SubCategory::orderBy('id', 'DESC')->paginate(10));
     }
 
     /**

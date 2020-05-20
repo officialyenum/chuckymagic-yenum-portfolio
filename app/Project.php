@@ -5,11 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
+use Te7aHoudini\LaravelTrix\Traits\HasTrixRichText;
 
 class Project extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['title','description','content','image','image_url','published_at','category_id','user_id','github_url','playstore_url','appstore_url','web_url'];
+    use HasTrixRichText;
+
+    protected $guarded = [];
+    protected $casts = [
+        'created_at' => 'date:Y-m-d',
+        'published_at' => 'date:Y-m-d'
+    ];
+    //protected $fillable = ['title','description','image','image_url','published_at','category_id','user_id','github_url','playstore_url','appstore_url','web_url'];
 
     public function deleteImage()
     {
@@ -96,5 +104,10 @@ class Project extends Model
     {
         $userID = Auth::user();
         return $this->project->where('user_id','Like', "%{$userID}%");
+    }
+
+    public function trixRender($field)
+    {
+        return $this->trixRichText->where('field', $field)->first()->content;
     }
 }

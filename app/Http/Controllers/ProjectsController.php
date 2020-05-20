@@ -27,7 +27,9 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return view('projects.index')->with('projects', Project::paginate(10))->with('user', Auth::user());
+        return view('projects.index')
+            ->with('projects', Project::orderBy('id', 'DESC')->paginate(10))
+            ->with('user', Auth::user());
     }
 
     /**
@@ -60,15 +62,17 @@ class ProjectsController extends Controller
             'projects',
             's3'
         );
+        //dd(Storage::disk('s3')->url($image));
         //set Image Visibility private
         //Storage::disk('s3')->setVisibility($image,'private');
         //set Image Visibility public
         //Storage::disk('s3')->setVisibility($image,'public');
-        // create the post
+        // create the project
         $project = Project::Create([
             'title' => $request->title,
             'description'=> $request->description,
-            'content' => $request->content,
+            'project-trixFields' => $request['project-trixFields'],
+            'attachment-project-trixFields' => $request['attachment-project-trixFields'],
             'published_at' => $request->published_at,
             'category_id' => $request->category,
             'user_id' => auth()->user()->id,
@@ -77,11 +81,11 @@ class ProjectsController extends Controller
             'appstore_url'=> $request->appstore_url,
             'web_url'=> $request->web_url,
             'image' => $image,
-            'imageUrl' => Storage::disk('s3')->url($image)
+            'image_url' => Storage::disk('s3')->url($image)
         ]);
 
         if ($request->sub_categories) {
-            $project->subcategories()->attach($request->subcategories);
+            $project->subcategories()->attach($request->sub_categories);
         }
         if ($request->tags) {
             $project->tags()->attach($request->tags);
@@ -132,7 +136,17 @@ class ProjectsController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $data = $request->only(['title','description','content','published_at']);
+        $data = $request->only([
+            'title',
+            'description',
+            'published_at',
+            'project-trixFields',
+            'attachment-project-trixFields',
+            'github_url',
+            'appstore_url',
+            'playstore_url',
+            'web_url'
+        ]);
         //check if new image
         if ($request->hasFile('image')) {
             //if new image upload it
@@ -151,7 +165,7 @@ class ProjectsController extends Controller
             $project->tags()->sync($request->tags);
         }
         if ($request->sub_categories) {
-            $project->subcategories()->sync($request->subcategories);
+            $project->subcategories()->sync($request->sub_categories);
         }
         if ($request->languages) {
             $project->languages()->sync($request->languages);

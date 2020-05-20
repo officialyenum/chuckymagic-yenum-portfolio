@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
                 'id' => 10000001,
                 'name' => 'Opone Yenum',
                 'email' => 'oponechukwuyenum@gmail.com',
+                'role' => 'admin',
                 'password' => Hash::make('password')
             ]);
         }

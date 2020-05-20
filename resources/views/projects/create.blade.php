@@ -16,7 +16,7 @@
                 @endif
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" id="title" value="{{ isset($post) ? $post->title : ''}}">
+                <input type="text" class="form-control" name="title" id="title" value="{{ isset($project) ? $project->title : ''}}">
             </div>
                 <div class="form-group">
                     <label for="category">Category</label>
@@ -24,8 +24,8 @@
 
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}"
-                            @if(isset($post))
-                                @if($category->id == $post->category_id)
+                            @if(isset($project))
+                                @if($category->id == $project->category_id)
                                     selected
                                 @endif
                             @endif
@@ -41,7 +41,7 @@
                         @foreach ($subcategories as $subcategory)
                             <option value="{{ $subcategory->id }}"
                                 @if (isset($project))
-                                    @if ($project->hasSubCategory($subCategory->id))
+                                    @if ($project->hasSubCategory($subcategory->id))
                                         selected
                                     @endif
                                 @endif
@@ -53,20 +53,23 @@
                 </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea name="description" id="description" cols="5" rows="5" class="form-control">{{ isset($post) ? $post->description : ''}}</textarea>
+                <textarea name="description" id="description" cols="5" rows="5" class="form-control">{{ isset($project) ? $project->description : ''}}</textarea>
             </div>
             <div class="form-group">
                 <label for="content">Content</label>
-                <input id="content" type="hidden" name="content" value="{{ isset($post) ? $post->content : ''}}">
-                <trix-editor input="content"></trix-editor>
+                @if (isset($project))
+                    @trix($project, 'content', [ 'disk' => ['s3']])
+                @else
+                    @trix(\App\Project::class, 'content', [ 'disk' => ['s3']])
+                @endif
             </div>
             <div class="form-group">
                 <label for="published_at">Published At</label>
-                <input type="text" class="form-control" name="published_at" id="published_at" value="{{ isset($post) ? $post->published_at : ''}}">
+                <input type="text" class="form-control" name="published_at" id="published_at" value="{{ isset($project) ? $project->published_at : ''}}">
             </div>
             @if (isset($project))
                 <div class="form-group">
-                <img src="{{ asset($project->image)}}" alt="image" width="100%">
+                <img src="{{ asset($project->image_url)}}" alt="image" width="100%">
                 </div>
 
             @endif
@@ -128,7 +131,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3">https://github.com/usersname/</span>
                     </div>
-                    <input type="text" class="form-control" name="github_url" id="github_url" aria-describedby="basic-addon3">
+                    <input type="text" class="form-control" name="github_url" id="github_url" aria-describedby="basic-addon3" value="{{ isset($project) ? $project->github_url : ''}}">
                 </div>
             </div>
 
@@ -138,7 +141,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3">https://playstore.com/applink/</span>
                     </div>
-                    <input type="text" class="form-control" name="playstore_url" id="playstore_url"  aria-describedby="basic-addon3">
+                    <input type="text" class="form-control" name="playstore_url" id="playstore_url"  aria-describedby="basic-addon3" value="{{ isset($project) ? $project->playstore_url : ''}}">
                 </div>
             </div>
 
@@ -148,7 +151,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3">https://appstore.com/applink/</span>
                     </div>
-                    <input type="text" class="form-control" name="appstore_url" id="appstore_url"  aria-describedby="basic-addon3">
+                    <input type="text" class="form-control" name="appstore_url" id="appstore_url"  aria-describedby="basic-addon3" value="{{ isset($project) ? $project->appstore_url : ''}}">
                 </div>
             </div>
 
@@ -159,7 +162,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3">https://websitename.com</span>
                     </div>
-                    <input type="text" class="form-control" name="web_url" id="web_url"  aria-describedby="basic-addon3">
+                    <input type="text" class="form-control" name="web_url" id="web_url"  aria-describedby="basic-addon3" value="{{ isset($project) ? $project->web_url : ''}}">
                 </div>
             </div>
 
@@ -177,17 +180,14 @@
 @section('scripts')
     <!-- Select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    @trixassets
     <script>
         flatpickr('#published_at', {
             enableTime: true,
             enableSeconds: true
         })
-        // Add the following code if you want the name of the file appear on select
-
-
         $(document).ready(function() {
             $('.tags-selector').select2();
             $(".custom-file-input").on("change", function() {
@@ -201,10 +201,8 @@
 
 @section('css')
     <!-- Select2 -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
 @endsection

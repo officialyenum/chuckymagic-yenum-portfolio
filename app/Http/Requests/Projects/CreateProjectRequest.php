@@ -28,7 +28,6 @@ class CreateProjectRequest extends FormRequest
             'title' => 'required|unique:projects',
             'description' => 'required|max:200',
             'image' => 'required|image|mimes:jpg,jpeg,png|max:2560',
-            'content' => 'required',
             'category' => 'required',
         ];
     }

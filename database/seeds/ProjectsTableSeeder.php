@@ -54,9 +54,9 @@ class ProjectsTableSeeder extends Seeder
         $project1 = $user->projects()->create([
             'title' => 'After Work Chills',
             'description' => 'After Work Chill is a community web application for working class proffesionals who wants to connect and do more',
-            'content' => 'Laravel Built Application blah blah blah....',
             'category_id' => $category1->id,
             'image' => 'img/projects/awc1.jpg',
+            'image_url' => 'https://yenum.s3.us-east-2.amazonaws.com/projects/project1.jpg',
             'github_url' => 'https://github.com/officialyenum/chuckymagic-awc',
             'playstore_url' => '',
             'appstore_url' => '',
@@ -66,9 +66,9 @@ class ProjectsTableSeeder extends Seeder
         $project2 = $user->projects()->create([
             'title' => 'Magic Switch',
             'description' => 'Magic Switch is an iOS mobile game application built with swift',
-            'content' => 'Laravel Built Application blah blah blah....',
             'category_id' => $category1->id,
             'image' => 'img/projects/awc2.jpg',
+            'image_url' => 'https://yenum.s3.us-east-2.amazonaws.com/projects/project2.jpg',
             'github_url' => 'https://github.com/officialyenum/chuckymagic-awc',
             'playstore_url' => '',
             'appstore_url' => '',

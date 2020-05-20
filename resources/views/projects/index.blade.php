@@ -19,7 +19,7 @@
                         @foreach ($projects as $project)
                             <tr>
                                 <td>
-                                    <img src="{{ asset($project->image) }}" alt="post image" width="40px"  height="40px">
+                                    <img src="{{ $project->image_url }}" alt="post image" width="40px"  height="40px">
                                 </td>
                                 <td>
                                     {{ $project->title }}

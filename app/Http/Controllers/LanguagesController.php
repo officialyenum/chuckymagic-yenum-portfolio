@@ -16,7 +16,7 @@ class LanguagesController extends Controller
      */
     public function index()
     {
-        return view('languages.index')->with('languages', Language::all());
+        return view('languages.index')->with('languages', Language::orderBy('id', 'DESC')->paginate(10));
     }
 
     /**
