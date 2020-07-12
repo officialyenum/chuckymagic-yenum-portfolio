@@ -10,4 +10,9 @@ class GamesController extends Controller
     {
         return view('games.index');
     }
+
+    public function csgame()
+    {
+        return view('games.csgame.index');
+    }
 }

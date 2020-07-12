@@ -44,6 +44,7 @@ Route::post('project/upload', 'ImageController@uploadFile');
 
 //Games
 Route::get('games', 'GamesController@index')->name('games.index');
+Route::get('csgame', 'GamesController@csgame')->name('games.csgame');
 
 //Cards
 Route::get('card', 'CardsController@index')->name('card.index');

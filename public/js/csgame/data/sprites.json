@@ -1,0 +1,8 @@
+{
+	"player":{"sx":1,"sy":1,"cols":1,"tilew":29,"tileh":32,"frames":1},
+	"greenrival":{"sx":31,"sy":1,"cols":1,"tilew":29,"tileh":32,"frames":1},
+	"bluerival":{"sx":61,"sy":1,"cols":1,"tilew":29,"tileh":32,"frames":1},
+	"purplerival":{"sx":91,"sy":1,"cols":1,"tilew":29,"tileh":32,"frames":1},
+	"flower":{"sx":121,"sy":21,"cols":1,"tilew":13,"tileh":12,"frames":1},
+	"girl":{"sx":135,"sy":1,"cols":1,"tilew":27,"tileh":32,"frames":1}
+}

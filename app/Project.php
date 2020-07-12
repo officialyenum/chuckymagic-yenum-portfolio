@@ -110,4 +110,9 @@ class Project extends Model
     {
         return $this->trixRichText->where('field', $field)->first()->content;
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->orderby('id','DESC');
+    }
 }
