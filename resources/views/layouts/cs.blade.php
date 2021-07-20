@@ -99,7 +99,7 @@
         </header> /.header -->
 
         <div id="app">
-            <main class="main-content overflow-auto" style="background-image: url({{asset('img/bg/gameCanvas.jpg')}});background-repeat: no-repeat;background-size: cover;height: 600px;">
+            <main class="main-content overflow-auto" style="background-image: url({{asset('img/bg/gameCanvas.jpg')}});background-repeat: no-repeat;background-size: cover;height: 150px;">
                     @yield('content')
             </main>
         </div>
@@ -109,7 +109,6 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{asset('/js/page.min.js')}}"></script>
         <script src="{{asset('/js/script.js')}}"></script>
         @yield('scripts')
     </body>

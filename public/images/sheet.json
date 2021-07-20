@@ -1,0 +1,28 @@
+{
+
+"images": [
+    "sheet.png"
+],
+
+"framerate": 8,
+"frames": [
+    [1, 1, 256, 256, 0, 128, 0],
+    [1, 259, 202, 219, 0, 96, 219],
+    [1, 480, 193, 215, 0, 102, 215],
+    [1, 697, 192, 211, 0, 88, 211],
+    [195, 697, 188, 213, 0, 78, 213],
+    [196, 480, 167, 210, 0, 75, 210],
+    [205, 259, 147, 205, 0, 54, 205]
+],
+
+"animations": {
+    "Floor": { "frames": [0] },
+    "RunRight": { "frames": [1, 4, 3, 2, 6, 5] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:db81cd437dee13439254b55adbcfd49b:1956a0a0f0706a27b86402e4b007c751:9c44ecd7e9a522007eaff2949095bc1d$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}
