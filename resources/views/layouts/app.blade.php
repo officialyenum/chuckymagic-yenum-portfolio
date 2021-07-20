@@ -16,6 +16,7 @@
     <!-- Styles -->
     @yield('css')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/toaster.min.css') }}" rel="stylesheet">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
 
@@ -128,6 +129,7 @@
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
+    <script src="{{ asset('js/toaster.min.js') }}" ></script>
     @yield('scripts')
 </body>
 </html>
