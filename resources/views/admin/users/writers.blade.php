@@ -15,7 +15,7 @@
 @section('rightbar-content')
     <div class="card card-header mb-5">
         <div class="card-header">
-            <h2>Users</h2>
+            <h2>Writers</h2>
         </div>
         @if ($users->count() > 0 )
             <div class="card-body">
@@ -122,7 +122,7 @@
                 </div>
             </div>
         @else
-            <h3 class="text-center">No Users Yet</h3>
+            <h3 class="text-center">No Writers Yet</h3>
         @endif
     </div>
 
@@ -174,7 +174,7 @@
     <script>
         function handleDelete(id) {
             var form = document.getElementById('deleteUserForm')
-            form.action = 'users/' + id
+            form.action = 'posts/' + id
             console.log('deleting', form);
 
             $('#deleteModal').modal('show')

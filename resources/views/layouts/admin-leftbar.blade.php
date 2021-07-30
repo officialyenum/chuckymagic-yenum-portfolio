@@ -22,9 +22,11 @@
                     </a>
                     <ul class="vertical-submenu">
                         <li><a href="{{ route('users.index')}}">All</a></li>
-                        <li><a href="">Administrators</a></li>
-                        <li><a href="">Writers</a></li>
-                        <li><a href="">Guests</a></li>
+                        <li><a href="{{ route('users.administrators')}}">Administrators</a></li>
+                        <li><a href="{{ route('users.writers')}}">Writers</a></li>
+                        <li><a href="{{ route('users.guests')}}">Guests</a></li>
+                        <li><a href="{{ route('users.roles')}}">Roles</a></li>
+                        <li><a href="{{ route('trashed-users.index')}}">Trash</a></li>
                     </ul>
                 </li>
                 <li>

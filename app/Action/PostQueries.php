@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 
 class PostQueries
 {
-    public function getAll()
+    public function all()
     {
         return DB::table('posts')->paginate(50);
     }

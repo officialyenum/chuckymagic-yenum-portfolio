@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Action\UserQueries;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = UserQueries::all();
         $onlineCount = 0;
         foreach ($users as $user) {
             if (Cache::has('user-is-online-' . $user->id)) {

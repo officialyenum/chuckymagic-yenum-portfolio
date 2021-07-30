@@ -12,13 +12,12 @@
         <!-- Fevicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
         <!-- Start CSS -->
-        @yield('style')
+        @yield('styles')
         <link href="{{ asset('assets/plugins/switchery/switchery.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <!-- End CSS -->
     </head>
     <body class="vertical-layout">
@@ -78,12 +77,8 @@
         </div>
         <!-- End Containerbar -->
         <!-- Start JS -->
-        <script src="{{ asset('js/app.js') }}" ></script>
         <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-        {{-- <script src="{{ asset('assets/js/popper.min.js') }}"></script> --}}
-        {{-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> --}}
-        {{-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> --}}
+        <script src="{{ asset('assets/js/popper.min.js') }}"></script>
         <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
         <script src="{{ asset('assets/js/detect.js') }}"></script>
@@ -92,7 +87,7 @@
         <script src="{{ asset('assets/plugins/switchery/switchery.min.js') }}"></script>
         <!-- Core JS -->
         <script src="{{ asset('assets/js/core.js') }}"></script>
-        @yield('script')
+        @yield('scripts')
         <!-- End JS -->
     </body>
 </html>

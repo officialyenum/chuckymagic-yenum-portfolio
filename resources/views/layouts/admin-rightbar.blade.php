@@ -13,16 +13,16 @@
                                 <a class="topbar-toggle-hamburger" href="javascript:void();">
                                     <i class="ri-more-fill menu-hamburger-horizontal"></i>
                                     <i class="ri-more-2-fill menu-hamburger-vertical"></i>
-                                 </a>
-                             </div>
+                                </a>
+                            </div>
                         </li>
                         <li class="list-inline-item">
                             <div class="menubar">
                                 <a class="menu-hamburger" href="javascript:void();">
                                     <i class="ri-menu-2-line menu-hamburger-collapse"></i>
                                     <i class="ri-close-line menu-hamburger-close"></i>
-                                 </a>
-                             </div>
+                                </a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -42,17 +42,17 @@
                                 <a class="menu-hamburger" href="javascript:void();">
                                     <i class="ri-menu-2-line menu-hamburger-collapse"></i>
                                     <i class="ri-close-line menu-hamburger-close"></i>
-                                 </a>
-                             </div>
+                                </a>
+                            </div>
                         </li>
                         <li class="list-inline-item">
                             <div class="searchbar">
                                 <form>
                                     <div class="input-group">
-                                      <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-                                      <div class="input-group-append">
-                                        <button class="btn" type="submit" id="button-addon2"><i class="ri-search-2-line"></i></button>
-                                      </div>
+                                        <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="submit" id="button-addon2"><i class="ri-search-2-line"></i></button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -118,9 +118,9 @@
                                     <a class="dropdown-toggle" href="#" role="button" id="languagelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag flag-icon-us flag-icon-squared"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languagelink">
                                         <a class="dropdown-item" href="#"><i class="flag flag-icon-us flag-icon-squared"></i>English</a>
-                                        <a class="dropdown-item" href="#"><i class="flag flag-icon-de flag-icon-squared"></i>German</a>
+                                        {{-- <a class="dropdown-item" href="#"><i class="flag flag-icon-de flag-icon-squared"></i>German</a>
                                         <a class="dropdown-item" href="#"><i class="flag flag-icon-bl flag-icon-squared"></i>France</a>
-                                        <a class="dropdown-item" href="#"><i class="flag flag-icon-ru flag-icon-squared"></i>Russian</a>
+                                        <a class="dropdown-item" href="#"><i class="flag flag-icon-ru flag-icon-squared"></i>Russian</a> --}}
                                     </div>
                                 </div>
                             </div>
@@ -169,6 +169,7 @@
             </div>
             <div class="col-md-4 col-lg-4">
                 <div class="widgetbar">
+                    @yield('addButton')
                     <button class="btn btn-primary"><i class="ri-add-line align-middle mr-2"></i>ADD</button>
                 </div>
             </div>
@@ -179,7 +180,7 @@
     <!-- Start Footerbar -->
     <div class="footerbar">
         <footer class="footer">
-            <p class="mb-0">© 2020 Minaati - All Rights Reserved.</p>
+            <p class="mb-0">© 2020 Yenum.dev - All Rights Reserved.</p>
         </footer>
     </div>
     <!-- End Footerbar -->

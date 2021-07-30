@@ -42,8 +42,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     //content Image
     // Route::post('post/upload', 'ImageController@uploadFile');
 
-    // Users
+    // Users Management
     Route::resource('users', 'Admin\UsersController');
+    Route::get('users/administrators', 'Admin\UsersController@administrators')->name('users.administrators');
+    Route::get('users/writers', 'Admin\UsersController@writers')->name('users.writers');
+    Route::get('users/guests', 'Admin\UsersController@guests')->name('users.guests');
+    Route::get('users/roles', 'Admin\UsersController@roles')->name('users.roles');
+    Route::get('trashed-users', 'Admin\UsersController@trashed')->name('trashed-users.index');
+    Route::put('restore-users/{user}', 'Admin\UsersController@restore')->name('restore-users');
     Route::post('users/{user}/make-writer', 'Admin\UsersController@makeWriter')->name('users.make-writer');
     Route::post('users/{user}/remove-writer', 'Admin\UsersController@removeWriter')->name('users.remove-writer');
     Route::post('users/{user}/make-admin', 'Admin\UsersController@makeAdmin')->name('users.make-admin');
