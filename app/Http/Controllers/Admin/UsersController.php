@@ -24,7 +24,54 @@ class UsersController extends Controller
                 $onlineCount = $onlineCount + 1;
             }
         }
+        // dd($users, $users2);
         return view('admin.users.index', compact('users','onlineCount'));
+    }
+
+    public function administrators()
+    {
+        dd('administrators');
+        $users = UserQueries::administrators();
+        $onlineCount = 0;
+        foreach ($users as $user) {
+            if (Cache::has('user-is-online-' . $user->id)) {
+                $onlineCount = $onlineCount + 1;
+            }
+        }
+        // dd($users, $users2);
+        return view('admin.users.administrators', compact('users','onlineCount'));
+    }
+
+    public function writers()
+    {
+        $users = UserQueries::writers();
+        $onlineCount = 0;
+        foreach ($users as $user) {
+            if (Cache::has('user-is-online-' . $user->id)) {
+                $onlineCount = $onlineCount + 1;
+            }
+        }
+        // dd($users, $users2);
+        return view('admin.users.writers', compact('users','onlineCount'));
+    }
+
+    public function guests()
+    {
+        $users = UserQueries::guests();
+        $onlineCount = 0;
+        foreach ($users as $user) {
+            if (Cache::has('user-is-online-' . $user->id)) {
+                $onlineCount = $onlineCount + 1;
+            }
+        }
+        // dd($users, $users2);
+        return view('admin.users.guests', compact('users','onlineCount'));
+    }
+
+    public function roles()
+    {
+        $roles = UserQueries::roles();
+        return view('admin.users.roles', compact('roles'));
     }
 
     /**

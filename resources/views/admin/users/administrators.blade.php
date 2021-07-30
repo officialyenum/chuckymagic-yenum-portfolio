@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    User Management
+    Administrators Management
 @endsection
 
 @section('styles')
@@ -174,7 +174,7 @@
     <script>
         function handleDelete(id) {
             var form = document.getElementById('deleteUserForm')
-            form.action = 'posts/' + id
+            form.action = 'users/' + id
             console.log('deleting', form);
 
             $('#deleteModal').modal('show')

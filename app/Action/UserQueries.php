@@ -16,12 +16,13 @@ class UserQueries
 {
     public static function all()
     {
-        return DB::table('users')->get();
+        return User::latest()->paginate(50);
+        // return DB::table('users')->get();
     }
 
     public static function administrators()
     {
-        return DB::table('users')
+        return User::latest()
             ->where('role_id', User::ROLE_SUPERADMIN)
             ->orWhere('role_id', User::ROLE_ADMIN)
             ->get();
@@ -29,22 +30,22 @@ class UserQueries
 
     public static function writers()
     {
-        return DB::table('users')
+        return User::latest()
             ->where('role_id', User::ROLE_WRITER)
             ->orWhere('role_id', User::ROLE_ADMIN)
             ->paginate(50);
     }
 
-    public static function guest()
+    public static function guests()
     {
-        return DB::table('users')
+        return User::latest()
             ->where('role_id', User::ROLE_USER)
             ->paginate(50);
     }
 
     public static function getOne($id)
     {
-        return DB::table('users')->find($id);
+        return User::find($id);
     }
 
     public static function countAll()

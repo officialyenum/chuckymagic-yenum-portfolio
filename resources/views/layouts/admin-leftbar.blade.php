@@ -3,15 +3,15 @@
     <div class="sidebar">
         <!-- Start Logobar -->
         <div class="logobar">
-            <a href="{{url('/')}}" class="logo logo-large"><img src="{{asset('img/logo/yenum-logo-main.png')}}" class="img-fluid" alt="logo"></a>
-            <a href="{{url('/')}}" class="logo logo-small"><img src="{{asset('img/logo/yenum-logo-main.png')}}" class="img-fluid" alt="logo"></a>
+            <a href="{{ route('admin.index')}}" class="logo logo-large"><img src="{{asset('img/logo/yenum-logo-main.png')}}" class="img-fluid" alt="logo"></a>
+            <a href="{{ route('admin.index')}}" class="logo logo-small"><img src="{{asset('img/logo/yenum-logo-main.png')}}" class="img-fluid" alt="logo"></a>
         </div>
         <!-- End Logobar -->
         <!-- Start Navigationbar -->
         <div class="navigationbar">
             <ul class="vertical-menu">
                 <li>
-                    <a href="{{url('/')}}">
+                    <a href="{{ route('admin.index')}}">
                         <i class="ri-user-6-fill"></i><span>Dashboard</span>
                     </a>
                 </li>
