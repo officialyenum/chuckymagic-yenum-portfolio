@@ -37,4 +37,18 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 1) {
+                # code...
+                return redirect()->route('admin.index');
+            }
+            return redirect()->intended('home');
+        }
+    }
 }

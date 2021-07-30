@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class VerifyIsAdmin
 {
@@ -15,9 +16,9 @@ class VerifyIsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->user()->isAdmin())
+        if (!Auth::user()->isAdmin())
         {
-            return redirect(route('welcome'));
+            return redirect(route('login'));
         }
         return $next($request);
     }

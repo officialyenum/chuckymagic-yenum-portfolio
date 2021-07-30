@@ -1,6 +1,7 @@
 <?php
 
-use App\User;
+use App\Models\User;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -12,13 +13,57 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::where('email','oponechukwuyenum@gmail.com')->first();
+        Role::create([
+            'id'=> 1,
+            'name'=> 'Super Admin',
+        ]);
+        Role::create([
+            'id'=> 2,
+            'name'=> 'Admin',
+        ]);
+        Role::create([
+            'id'=> 3,
+            'name'=> 'Writer',
+        ]);
+        Role::create([
+            'id'=> 4,
+            'name'=> 'User',
+        ]);
+        $user = User::where('email','admin@yenum.dev')->first();
         if (!$user) {
             User::create([
-                'id' => 10000001,
-                'name' => 'Opone Yenum',
+                'username' => 'superadmin',
+                'firstname' => 'Superadmin',
+                'lastname' => 'Yenum',
+                'email' => 'superadmin@yenum.dev',
+                'role_id' => 1,
+                'password' => Hash::make('password')
+            ]);
+            User::create([
+                'username' => 'admin',
+                'firstname' => 'Admin',
+                'lastname' => 'Yenum',
+                'email' => 'admin@yenum.dev',
+                'role_id' => 2,
+                'password' => Hash::make('password')
+            ]);
+            User::create([
+                'username' => 'yenum',
+                'firstname' => 'Yenum',
+                'lastname' => 'Opone',
                 'email' => 'oponechukwuyenum@gmail.com',
-                'role' => 'admin',
+                'role_id' => 3,
+                'password' => Hash::make('password')
+            ]);
+
+
+            User::create([
+                'username' => 'johndoe',
+                'firstname' => 'john',
+                'lastname' => 'doe',
+                'email' => 'john@doe.com',
+                'phone' => '07064482201',
+                'role_id' => 4,
                 'password' => Hash::make('password')
             ]);
         }

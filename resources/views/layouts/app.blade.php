@@ -59,7 +59,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -78,7 +78,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="{{route('projects.create')}}" style="width: 100%;" class="btn btn-info my-2 text-white">Create Project</a>
+                        <a href="{{route('posts.create')}}" style="width: 100%;" class="btn btn-info my-2 text-white">Create Post</a>
                         <div class="card">
                             <div class="card-header">
                                 MENU
@@ -86,8 +86,8 @@
                             <div class="card-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">
-                                        <a class="btn btn-info text-white btn-block"  href="{{ route('projects.index')}}">
-                                            Projects
+                                        <a class="btn btn-info text-white btn-block"  href="{{ route('posts.index')}}">
+                                            Posts
                                         </a>
                                     </li>
 
@@ -97,23 +97,13 @@
                                         </a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a class="btn btn-info text-white btn-block" href="{{ route('subcategories.index')}}">
-                                            Sub Categories
+                                        <a class="btn btn-info text-white btn-block" href={{ route('tags.index') }}>
+                                            Tags
                                         </a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a class="btn btn-info text-white btn-block" href="{{ route('tags.index')}}">
-                                            FrameWorks And IDE
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a class="btn btn-info text-white btn-block" href="{{ route('languages.index')}}">
-                                            Languages
-                                        </a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a class="btn btn-info text-white btn-block" href="{{ route('trashed-projects.index')}}">
-                                            Trashed Projects
+                                        <a class="btn btn-info text-white btn-block" href="{{ route('trashed-posts.index')}}">
+                                            Trashed Posts
                                         </a>
                                     </li>
                                 </ul>

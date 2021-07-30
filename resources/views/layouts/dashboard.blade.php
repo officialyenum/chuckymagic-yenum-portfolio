@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        @trixassets
+        {{-- @trixassets --}}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
@@ -9,8 +9,8 @@
         </title>
 
         <!-- Favicons -->
-        <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
-        <link rel="icon" href="../assets/img/favicon.png">
+        <link rel="apple-touch-icon" href={{asset('img/apple-touch-icon.png')}}>
+        <link rel="icon" href={{asset('img/favicon.png')}}>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -75,65 +75,59 @@
     </head>
     <body>
         <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="sticky">
-        <div class="container">
+            {{-- <nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="sticky">
+                <div class="container">
 
-          <div class="navbar-left">
-            <button class="navbar-toggler" type="button">&#9776;</button>
-          <a class="navbar-brand" href="{{route('dashboard')}}">
-                <img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo">
-                <img class="logo-light" src="{{asset('img/logo/yenumcomlight.png')}}" alt="logo">
-            </a>
-          </div>
+                    <div class="navbar-left">
+                        <button class="navbar-toggler" type="button">&#9776;</button>
+                    <a class="navbar-brand" href="{{route('home')}}">
+                            <img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo">
+                            <img class="logo-light" src="{{asset('img/logo/yenumcomlight.png')}}" alt="logo">
+                        </a>
+                    </div>
 
-          <section class="navbar-mobile">
-            <span class="navbar-divider d-mobile-none"></span>
+                    <section class="navbar-mobile">
+                        <span class="navbar-divider d-mobile-none"></span>
 
-            <ul class="nav nav-navbar">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Application <span class="arrow"></span></a>
-                <nav class="nav">
-                    <a class="nav-link" href="#">Mobile</a>
-                    <a class="nav-link" href="#">Web</a>
-                    <a class="nav-link" href="#">Game</span></a>
-                    <a class="nav-link" href="{{ route('games.index')}}">Web Game</span></a>
-                    <div class="nav-divider"></div>
-                    <a class="nav-link" href="#">Team Projects</a>
-                    <a class="nav-link" href="#">How I Built it</a>
-                </nav>
-              </li>
+                        <ul class="nav nav-navbar">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Application <span class="arrow"></span></a>
+                            <nav class="nav">
+                                <a class="nav-link" href="#">Mobile</a>
+                                <div class="nav-divider"></div>
+                                <a class="nav-link" href="#">Team Projects</a>
+                            </nav>
+                        </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="#">Photography <span class="arrow"></span></a>
-                <nav class="nav">
-                    <a class="nav-link" href="#">Portrait</a>
-                    <a class="nav-link" href="#">Photo Manipulation</a>
-                    <a class="nav-link" href="#">Photo Retouch</a>
-                    <div class="nav-divider"></div>
-                    <a class="nav-link" href="#">How I Shot it</a>
-                    <a class="nav-link" href="#">How I Edited it</a>
-                </nav>
-              </li>
+                        </ul>
+                    </section>
+                    </div>
+            </nav> --}}
+        <!-- /.navbar -->
+        <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark" data-navbar="fixed">
+                <div class="container">
 
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Video <span class="arrow"></span></a>
-                <nav class="nav">
-                  <a class="nav-link" href="#">Edit</a>
-                  <a class="nav-link" href="#">Vfx Edit</a>
-                  <a class="nav-link" href="#">Abstract</a>
-                  <div class="nav-divider"></div>
-                  <a class="nav-link" href="#">How i Shot it</a>
-                  <a class="nav-link" href="#">How i Edited it</a>
-                </nav>
-              </li>
+                <div class="navbar-left">
+                    <button class="navbar-toggler" type="button">&#9776;</button>
+                    <a class="navbar-brand" href="{{route('home')}}">
+                        <img class="logo-light" src="{{asset('img/logo/yenum-logo-main.png')}}" alt="logo">
+                        <img class="logo-dark" src="{{asset('img/logo/yenum-logo-main.png')}}" alt="logo">
+                    </a>
+                </div>
 
-            </ul>
-          </section>
+                <section class="navbar-mobile">
+                    <nav class="nav nav-navbar ml-auto">
+                    <a class="nav-link" href="#home">Home</a>
+                    <a class="nav-link" href="#about">About</a>
+                    <a class="nav-link" href="#portfolio">Portfolio</a>
+                    <a class="nav-link" href="#articles">Articles</a>
+                    <a class="nav-link" href="#footer">GD50</a>
+                    </nav>
+                </section>
 
-          <a class="btn btn-xs btn-round btn-success" href="{{ route('games.index')}}">Play Now</a>
-
-        </div>
-    </nav><!-- /.navbar -->
+                </div>
+            </nav><!-- /.navbar -->
 
     @yield('content')
 
@@ -148,17 +142,17 @@
 
         <div class="col-6 col-lg-3 text-right order-lg-last">
             <div class="social">
-            <a class="social-facebook" href="https://www.facebook.com/thethemeio"><i class="fa fa-facebook"></i></a>
-            <a class="social-twitter" href="https://twitter.com/thethemeio"><i class="fa fa-twitter"></i></a>
-            <a class="social-instagram" href="https://www.instagram.com/thethemeio/"><i class="fa fa-instagram"></i></a>
-            <a class="social-dribbble" href="https://dribbble.com/thethemeio"><i class="fa fa-dribbble"></i></a>
+            <a class="social-github" href="https://www.github.com/officialyenum"><i class="fa fa-github"></i></a>
+            <a class="social-twitter" href="https://twitter.com/officialyenum"><i class="fa fa-twitter"></i></a>
+            <a class="social-instagram" href="https://www.instagram.com/officialyenum/"><i class="fa fa-instagram"></i></a>
             </div>
         </div>
 
         <div class="col-lg-6">
             <div class="nav nav-bold nav-uppercase nav-trim justify-content-lg-center">
-            <a class="nav-link" href="#">About</a>
-            <a class="nav-link" href="#">Articles</a>
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#portfolio">Portfolio</a>
+            <a class="nav-link" href="#articles">Articles</a>
             <a class="nav-link" href="#">Contact</a>
             </div>
         </div>
