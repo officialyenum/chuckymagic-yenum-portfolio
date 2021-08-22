@@ -4,6 +4,7 @@ namespace App\Action;
 
 use App\Models\Media;
 use App\Models\Post;
+use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,6 @@ class UserQueries
     {
         return User::latest()
             ->where('role_id', User::ROLE_WRITER)
-            ->orWhere('role_id', User::ROLE_ADMIN)
             ->paginate(50);
     }
 
@@ -43,9 +43,19 @@ class UserQueries
             ->paginate(50);
     }
 
+    public static function trashed()
+    {
+        return User::onlyTrashed()->get();
+    }
+
     public static function getOne($id)
     {
         return User::find($id);
+    }
+
+    public static function roles()
+    {
+        return Role::cursor();
     }
 
     public static function countAll()

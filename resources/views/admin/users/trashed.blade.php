@@ -13,7 +13,8 @@
 @endsection
 
 @section('rightbar-content')
-    @include('admin.tables.user-table',['title'=> 'Users','users' => $users])
+
+    @include('admin.tables.user-table',['title'=> 'Trashed Users','users' => $users])
 
     <div class="modal fade" id="deleteModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -63,7 +64,7 @@
     <script>
         function handleDelete(id) {
             var form = document.getElementById('deleteUserForm')
-            form.action = 'users/' + id
+            form.action = 'posts/' + id
             console.log('deleting', form);
 
             $('#deleteModal').modal('show')

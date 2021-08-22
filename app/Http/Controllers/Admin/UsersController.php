@@ -28,9 +28,8 @@ class UsersController extends Controller
         return view('admin.users.index', compact('users','onlineCount'));
     }
 
-    public function administrators()
+    public function administrator()
     {
-        dd('administrators');
         $users = UserQueries::administrators();
         $onlineCount = 0;
         foreach ($users as $user) {
@@ -42,7 +41,7 @@ class UsersController extends Controller
         return view('admin.users.administrators', compact('users','onlineCount'));
     }
 
-    public function writers()
+    public function writer()
     {
         $users = UserQueries::writers();
         $onlineCount = 0;
@@ -55,7 +54,7 @@ class UsersController extends Controller
         return view('admin.users.writers', compact('users','onlineCount'));
     }
 
-    public function guests()
+    public function guest()
     {
         $users = UserQueries::guests();
         $onlineCount = 0;
@@ -72,6 +71,18 @@ class UsersController extends Controller
     {
         $roles = UserQueries::roles();
         return view('admin.users.roles', compact('roles'));
+    }
+
+    public function trashed()
+    {
+        $users = UserQueries::trashed();
+        $onlineCount = 0;
+        foreach ($users as $user) {
+            if (Cache::has('user-is-online-' . $user->id)) {
+                $onlineCount = $onlineCount + 1;
+            }
+        }
+        return view('admin.users.trashed', compact('users','onlineCount'));
     }
 
     /**

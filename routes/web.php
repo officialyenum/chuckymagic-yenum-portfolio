@@ -43,10 +43,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     // Route::post('post/upload', 'ImageController@uploadFile');
 
     // Users Management
-    Route::resource('users', 'Admin\UsersController');
-    Route::get('users/administrators', 'Admin\UsersController@administrators')->name('users.administrators');
-    Route::get('users/writers', 'Admin\UsersController@writers')->name('users.writers');
-    Route::get('users/guests', 'Admin\UsersController@guests')->name('users.guests');
+    Route::get('users/administrators', 'Admin\UsersController@administrator')->name('users.administrators');
+    Route::get('users/writers', 'Admin\UsersController@writer')->name('users.writers');
+    Route::get('users/guests', 'Admin\UsersController@guest')->name('users.guests');
     Route::get('users/roles', 'Admin\UsersController@roles')->name('users.roles');
     Route::get('trashed-users', 'Admin\UsersController@trashed')->name('trashed-users.index');
     Route::put('restore-users/{user}', 'Admin\UsersController@restore')->name('restore-users');
@@ -56,6 +55,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('users/{user}/remove-admin', 'Admin\UsersController@removeAdmin')->name('users.remove-admin');
     Route::post('users/{user}/make-super-admin', 'Admin\UsersController@makeSuperAdmin')->name('users.make-super-admin');
     Route::post('users/{user}/remove-super-admin', 'Admin\UsersController@removeSuperAdmin')->name('users.remove-super-admin');
+    Route::resource('users', 'Admin\UsersController');
 });
 
 //Games

@@ -2,7 +2,7 @@
     Dashboard
 @endsection
 @extends('layouts.admin')
-@section('style')
+@section('styles')
     <!-- Apex css -->
     <link href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
     <!-- Slick css -->
@@ -258,7 +258,7 @@
         </div>
     <!-- End Contentbar -->
 @endsection
-@section('script')
+@section('scripts')
     <!-- Apex js -->
     <script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
