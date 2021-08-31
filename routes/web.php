@@ -15,13 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 
 //Home Page
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -72,6 +68,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 // Route::get('dice-single', 'DiceController@single')->name('dice.single');
 // Route::get('dice-multiplayer', 'DiceController@multiplayer')->name('dice.multiplayer');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
