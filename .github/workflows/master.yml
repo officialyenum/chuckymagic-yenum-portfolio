@@ -20,14 +20,6 @@ jobs:
         password: ${{ secrets.ftp_password }}
         server-dir: /public_html/dashboard/
 
-    - name: Checkout Repository
-      uses: actions/checkout@master
-    - name: Setup Enviroment
-      uses: shivammathur/setup-php@v2
-      with:
-          php-version: '7.4'
-    - name: Speed up the packages installation process
-      run: composer global require hirak/prestissimo
     - name: Install Packages
       run: |
         composer install —optimise-autoloader —no-dev
