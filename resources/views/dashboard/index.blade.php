@@ -76,7 +76,7 @@
                         <div class="col-6 col-lg-3">
                             <div class="card shadow-1 hover-shadow-6">
                                 <a class="p-2" href="{{route('dashboard.show',$post->slug)}}">
-                                <img class="card-img-top" src="{{$post->feature_image}}" alt="screenshot">
+                                <img class="card-img-top" src="{{$post->featured_image}}" alt="screenshot">
                                 </a>
                                 <div class="card-body flexbox">
                                     <h6 class="mb-0">
@@ -84,18 +84,26 @@
                                     </h6>
                                 </div>
                                 <div class="row justify-content-center mx-2 mb-2">
-                                    <div class="col-xs-3">
-                                        <a class="text-inherit mx-2" href="{{$post->web_url}}"><i class="fa fa-globe pr-1 opacity-60"  style="font-size: 2em;"></i></a>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <a class="text-inherit mx-2" href="{{$post->playstore_url}}"><i class="fa fa-google pr-1 opacity-60" style="font-size: 2em;"></i></a>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <a class="text-inherit mx-2" href="{{$post->appstore_url}}"><i class="fa fa-apple pr-1 opacity-60" style="font-size: 2em;"></i></a>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <a class="text-inherit mx-2" href="{{$post->github_url}}"><i class="fa fa-github pr-1 opacity-60" style="font-size: 2em;"></i></a>
-                                    </div>
+                                    @if ($post->web_url)
+                                        <div class="col-xs-3">
+                                            <a class="text-inherit mx-2" href="{{$post->web_url}}"><i class="fa fa-globe pr-1 opacity-60"  style="font-size: 2em;"></i></a>
+                                        </div>
+                                    @endif
+                                    @if ($post->playstore_url)
+                                        <div class="col-xs-3">
+                                            <a class="text-inherit mx-2" href="{{$post->playstore_url}}"><i class="fa fa-google pr-1 opacity-60" style="font-size: 2em;"></i></a>
+                                        </div>
+                                    @endif
+                                    @if ($post->appstore_url)
+                                        <div class="col-xs-3">
+                                            <a class="text-inherit mx-2" href="{{$post->appstore_url}}"><i class="fa fa-apple pr-1 opacity-60" style="font-size: 2em;"></i></a>
+                                        </div>
+                                    @endif
+                                    @if ($post->github_url)
+                                        <div class="col-xs-3">
+                                            <a class="text-inherit mx-2" href="{{$post->github_url}}"><i class="fa fa-github pr-1 opacity-60" style="font-size: 2em;"></i></a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -127,7 +135,7 @@
                         @foreach ($posts as $key => $post)
                         <div class="col-md-6 col-lg-4">
                             <div class="card border hover-shadow-6 d-block">
-                                <a href="{{route('dashboard.show',$post->slug)}}"><img class="card-img-top" src="{{$post->image_url}}" alt="Card image cap"></a>
+                                <a href="{{route('dashboard.show',$post->slug)}}"><img class="card-img-top" src="{{$post->featured_image}}" alt="Card image cap"></a>
                                 {{-- <div class="col-6 col-lg-3" data-shuffle="item" data-groups="{{$post->category->name}}"> --}}
                                 <div class="card-body">
                                     <h5 class="card-title"><a href="{{route('dashboard.show',$post->slug)}}">{{$post->title}}</a></h5>
