@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Action\UserQueries;
+use App\Query\UserQueries;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;

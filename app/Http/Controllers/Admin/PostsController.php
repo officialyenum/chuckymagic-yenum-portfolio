@@ -10,6 +10,7 @@ use App\Models\Language;
 use App\Models\Post;
 use App\Models\SubCategory;
 use App\Models\Tag;
+use App\Query\PostQueries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,7 @@ class PostsController extends Controller
     public function index()
     {
         return view('posts.index')
-            ->with('posts', Post::orderBy('id', 'DESC')->paginate(10))
+            ->with('posts', PostQueries::all())
             ->with('user', Auth::user());
     }
 
@@ -42,9 +43,7 @@ class PostsController extends Controller
     {
         return view('posts.create')
             ->with('categories', Category::all())
-            ->with('subcategories', SubCategory::all())
-            ->with('tags', Tag::all())
-            ->with('languages', Language::all());
+            ->with('tags', Tag::all());
     }
 
     /**
@@ -116,9 +115,7 @@ class PostsController extends Controller
     {
         return view('posts.create')->with('post',$post)
             ->with('categories', Category::all())
-            ->with('subcategories', SubCategory::all())
-            ->with('tags', Tag::all())
-            ->with('languages', Language::all());
+            ->with('tags', Tag::all());
     }
 
     /**

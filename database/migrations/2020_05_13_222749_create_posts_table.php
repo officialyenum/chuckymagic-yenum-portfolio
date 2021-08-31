@@ -19,8 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->string('description');
             $table->text('content');
-            $table->string('image');
-            $table->string('image_url')->nullable();
+            $table->string('featured_image')->nullable();
             $table->integer('category_id');
             $table->integer('user_id');
             $table->string('github_url')->nullable();

@@ -15,9 +15,13 @@ class CreateMediaTable extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->string('mimeType');
-            $table->string('image');
+            $table->string('title');
+            $table->string('slug');
             $table->string('url');
+            $table->string('path');
+            $table->string('description');
+            $table->string('size');
+            $table->string('mimeType');
             $table->integer('post_id')->nullable();
             $table->integer('category_id')->nullable();
             $table->integer('tag_id')->nullable();
