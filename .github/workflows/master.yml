@@ -8,9 +8,18 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
+
+    - name: Use Node.js 12
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: '12'
+
+    - name: 🔨 Build Project
+      run: |
+        npm install
+        npm run build
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
@@ -19,22 +28,3 @@ jobs:
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
         server-dir: /public_html/dashboard/
-
-    - name: Install Packages
-      run: |
-        composer install —optimise-autoloader —no-dev
-    - name: Deploy to Server
-      uses: ngocquyhoang/deploy@laravel
-      with:
-          user: yenumdev
-          host: yenum.dev
-          port: 2083
-          path: /public_html/dashboard/
-          owner: owner
-      env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-
-    - name: 🔨 Build Project
-      run: |
-        npm install
-        npm run build
