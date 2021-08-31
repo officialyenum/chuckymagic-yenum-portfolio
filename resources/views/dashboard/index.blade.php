@@ -17,7 +17,7 @@
 
             <div class="col-lg-6">
             <h1 class="fw-600 mt-5">Yenum<span class="text-primary">.dev</span><br><span class="text-info">Aspiring</span> Game Programmer.</h1>
-            <p class="lead mt-2 mb-6">I have a serious passion for building Games and creating solutions to complex problems. My ultimate quest is to develop web, mobile and console games that will blow your mind.</p>
+            <p class="lead mt-2 mb-6">I have a serious passion for building Games and creating solutions to complex problems, I write sometimes, Arsenal Super Fan and an Anime Freak. My ultimate quest is to develop web, mobile and console games that will blow your mind.</p>
             <p class="gap-xy">
                 <a class="btn btn-round btn-primary mw-200" href="#">Sign up — Free</a>
                 <a class="btn btn-round btn-outline-secondary mw-200" href="#">Learn more</a>
@@ -31,28 +31,6 @@
         </div>
         </div>
     </header><!-- /.header -->
-    <!-- categories -->
-    <div class="container-fluid">
-        <header class="section-header">
-            <h2>Categories</h2>
-        </header>
-        <div class="row gap-y gap-2 mb-8 flex-row flex-nowrap">
-            @foreach ($categories as $key => $category)
-            <div class="col-4 col-lg-2">
-                    <a href="{{route('dashboard.show',$category->slug)}}">
-                    <div class="card shadow-1 hover-shadow-2"  style="background-image: url({{asset($category->image)}})" data-overlay="4">
-                        <div class="card-body text-center">
-                            <h6 class="mb-0 text-white fw-900 fs-10">
-                                {{$category->title}}
-                            </h6>
-                        </div>
-                    </div>
-                </a>
-                </div>
-            @endforeach
-        </div>
-    </div>
-    <!-- categories -->
 
       <!-- Header -->
       <header class="header text-white" style="background-image: url({{asset('img/yenum/wide-2.jpg')}})" data-overlay="8">
@@ -66,7 +44,7 @@
               <P> -- Yenum Opone -- </P>
               <hr class="w-60px my-7">
 
-              <a class="btn btn-lg btn-round btn-white" href="#articles">Read My Articles</a>
+              <a class="btn btn-lg btn-round btn-white" href="https://officialyenum.medium.com">Read My Medium Articles</a>
 
             </div>
           </div>
@@ -98,7 +76,7 @@
                         <div class="col-6 col-lg-3">
                             <div class="card shadow-1 hover-shadow-6">
                                 <a class="p-2" href="{{route('dashboard.show',$post->slug)}}">
-                                <img class="card-img-top" src="{{$post->image_url}}" alt="screenshot">
+                                <img class="card-img-top" src="{{$post->feature_image}}" alt="screenshot">
                                 </a>
                                 <div class="card-body flexbox">
                                     <h6 class="mb-0">
