@@ -222,11 +222,11 @@
 
                 <section class="navbar-mobile">
                     <nav class="nav nav-navbar ml-auto">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="{{route('home')}}">Home</a>
                         <a class="nav-link" href="#about">About</a>
                         <a class="nav-link" href="#portfolio">Portfolio</a>
                         <a class="nav-link" href="#articles">Articles</a>
-                        <a class="nav-link" href="#footer">GD50</a>
+                        <a class="nav-link" href="https://github.com/officialyenum/GD50" target="_blank">GD50</a>
                     </nav>
                     @auth
                         {{-- <a class="btn btn-round btn-primary mw-200" href="#">Sign up — Free</a> --}}
@@ -253,9 +253,9 @@
 
         <div class="col-6 col-lg-3 text-right order-lg-last">
             <div class="social">
-            <a class="social-github" href="https://www.github.com/officialyenum"><i class="fa fa-github"></i></a>
-            <a class="social-twitter" href="https://twitter.com/officialyenum"><i class="fa fa-twitter"></i></a>
-            <a class="social-instagram" href="https://www.instagram.com/officialyenum/"><i class="fa fa-instagram"></i></a>
+            <a class="social-github" href="https://www.github.com/officialyenum" target="_blank"><i class="fa fa-github"></i></a>
+            <a class="social-twitter" href="https://twitter.com/officialyenum" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a class="social-instagram" href="https://www.instagram.com/officialyenum/" target="_blank"><i class="fa fa-instagram"></i></a>
             </div>
         </div>
 
