@@ -230,10 +230,10 @@
                     </nav>
                     @auth
                         {{-- <a class="btn btn-round btn-primary mw-200" href="#">Sign up — Free</a> --}}
-                        <a class="nav-link btn btn-round btn-xs btn-light mw-100 mx-2" href="{{ route('admin.index')}}"><small> {{ Auth::user()->username }}'s Dashboard</small></a>
+                        {{-- <a class="nav-link btn btn-round btn-xs btn-light mw-100 mx-2" href="{{ route('admin.index')}}"><small> {{ Auth::user()->username }}'s Dashboard</small></a> --}}
                     @else
-                        <a class="nav-link btn btn-round btn-xs btn-light mw-100 mx-2" href="{{ route('login') }}">Login</a>
-                        <a class="nav-link btn btn-round btn-xs btn-success mw-100 mx-2" href="{{ route('register') }}">Register</a>
+                        {{-- <a class="nav-link btn btn-round btn-xs btn-light mw-100 mx-2" href="{{ route('login') }}">Login</a> --}}
+                        {{-- <a class="nav-link btn btn-round btn-xs btn-success mw-100 mx-2" href="{{ route('register') }}">Register</a> --}}
                     @endauth
                 </section>
 
