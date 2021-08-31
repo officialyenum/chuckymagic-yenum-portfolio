@@ -17,4 +17,4 @@ jobs:
         server:  ftp.yenum.dev
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: /public_html/dashboard
+        server-dir: /public_html/dashboard/
