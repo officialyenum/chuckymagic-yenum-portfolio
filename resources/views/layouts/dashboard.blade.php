@@ -17,9 +17,9 @@
 
         <!-- Styles -->
         @yield('css')
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('/css/page.min.css')}}" rel="stylesheet">
-        <link href="{{ asset('/css/style.css')}}" rel="stylesheet">
+        <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/css/page.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -275,9 +275,9 @@
 
     @yield('scripts')
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{asset('/js/page.min.js')}}"></script>
-    <script src="{{asset('/js/script.js')}}"></script>
+    <script src="{{ asset('public/js/app.js') }}"></script>
+    <script src="{{asset('public/js/page.min.js')}}"></script>
+    <script src="{{asset('public/js/script.js')}}"></script>
 
     </body>
 </html>

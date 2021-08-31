@@ -16,9 +16,9 @@
 
         <!-- Styles -->
         @yield('css')
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('/css/page.min.css')}}" rel="stylesheet">
-        <link href="{{ asset('/css/style.css')}}" rel="stylesheet">
+        <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('public/css/page.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
 
     </head>
     <body>
@@ -108,8 +108,8 @@
         <!-- Popper -->
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{asset('/js/script.js')}}"></script>
+        <script src="{{ asset('public/js/app.js') }}"></script>
+        <script src="{{asset('public/js/script.js')}}"></script>
         @yield('scripts')
     </body>
 </html>

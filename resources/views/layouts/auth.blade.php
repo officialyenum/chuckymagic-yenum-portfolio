@@ -17,10 +17,10 @@
 
     <!-- Styles -->
     @yield('css')
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/page.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('/css/style.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/toaster.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/page.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('public/css/toaster.min.css') }}" rel="stylesheet">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
 
@@ -28,10 +28,10 @@
 <body class="layout-centered bg-img" style="background-image: url({{asset('img/yenum/wide-2.jpg')}})">
         @yield('content')
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{asset('/js/page.min.js')}}"></script>
-    <script src="{{asset('/js/script.js')}}"></script>
-    <script src="{{ asset('js/toaster.min.js') }}" ></script>
+    <script src="{{ asset('public/js/app.js') }}"></script>
+    <script src="{{asset('public/js/page.min.js')}}"></script>
+    <script src="{{asset('public/js/script.js')}}"></script>
+    <script src="{{ asset('public/js/toaster.min.js') }}" ></script>
     @yield('scripts')
 </body>
 </html>
