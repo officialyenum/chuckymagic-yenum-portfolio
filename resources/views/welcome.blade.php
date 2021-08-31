@@ -78,8 +78,8 @@
             <div class="navbar-left">
                 <button class="navbar-toggler" type="button">&#9776;</button>
             <a class="navbar-brand" href="{{route('welcome')}}">
-                    <img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo">
-                    <img class="logo-light" src="{{asset('img/logo/yenumcomlight.png')}}" alt="logo">
+                    <img class="logo-dark" src="{{asset('public/img/logo/yenumcomdark.png')}}" alt="logo">
+                    <img class="logo-light" src="{{asset('public/img/logo/yenumcomlight.png')}}" alt="logo">
                 </a>
             </div>
 
@@ -122,7 +122,7 @@
 
 
         <!-- Header -->
-        <header class="header text-white" style="background-image: url({{asset('img/bg/officialyenum.jpg')}})" data-overlay="8">
+        <header class="header text-white" style="background-image: url({{asset('public/img/bg/officialyenum.jpg')}})" data-overlay="8">
             <div class="container text-center">
 
                 <div class="row">
@@ -176,7 +176,7 @@
 
                         <div class="col-6 col-lg-3" data-shuffle="item" data-groups="applications,videos">
                         <a class="portfolio-1" href="portfolio-single.html">
-                            <img src="{{asset('img/projects/awc-logo.jpg')}}" alt="screenshot">
+                            <img src="{{asset('public/img/projects/awc-logo.jpg')}}" alt="screenshot">
                             <div class="portfolio-detail">
                             <h5>Afterwork Chills Website</h5>
                             <p>Applications,Videos</p>
@@ -187,7 +187,7 @@
 
                         <div class="col-6 col-lg-3" data-shuffle="item" data-groups="photographs">
                         <a class="portfolio-1" href="portfolio-single.html">
-                            <img src="{{asset('img/bg/chuckymagic.jpg')}}" alt="screenshot">
+                            <img src="{{asset('public/img/bg/chuckymagic.jpg')}}" alt="screenshot">
                             <div class="portfolio-detail">
                             <h5>Ligthning God Look Edit</h5>
                             <p>Photographs</p>
@@ -198,7 +198,7 @@
 
                         <div class="col-6 col-lg-3" data-shuffle="item" data-groups="photographs">
                         <a class="portfolio-1" href="portfolio-single.html">
-                            <img src="{{asset('img/categories/photography.jpeg')}}" alt="screenshot">
+                            <img src="{{asset('public/img/categories/photography.jpeg')}}" alt="screenshot">
                             <div class="portfolio-detail">
                             <h5>T-shirt</h5>
                             <p>Photographs</p>
@@ -209,7 +209,7 @@
 
                         <div class="col-6 col-lg-3" data-shuffle="item" data-groups="photographs">
                         <a class="portfolio-1" href="portfolio-single.html">
-                            <img src="{{asset('img/categories/photography.jpeg')}}" alt="screenshot">
+                            <img src="{{asset('public/img/categories/photography.jpeg')}}" alt="screenshot">
                             <div class="portfolio-detail">
                             <h5>Coffee</h5>
                             <p>Photographs</p>
@@ -220,7 +220,7 @@
 
                         <div class="col-6 col-lg-3" data-shuffle="item" data-groups="applications">
                         <a class="portfolio-1" href="portfolio-single.html">
-                            <img src="{{asset('img/categories/game.jpeg')}}" alt="screenshot">
+                            <img src="{{asset('public/img/categories/game.jpeg')}}" alt="screenshot">
                             <div class="portfolio-detail">
                             <h5>Magic Switch</h5>
                             <p>Application</p>
@@ -231,7 +231,7 @@
 
                         <div class="col-6 col-lg-3" data-shuffle="item" data-groups="videos">
                         <a class="portfolio-1" href="portfolio-single.html">
-                            <img src="{{asset('img/categories/videoedit.jpeg')}}" alt="screenshot">
+                            <img src="{{asset('public/img/categories/videoedit.jpeg')}}" alt="screenshot">
                             <div class="portfolio-detail">
                             <h5>Visual is The Future</h5>
                             <p>Video</p>
@@ -242,7 +242,7 @@
 
                         <div class="col-6 col-lg-3" data-shuffle="item" data-groups="application">
                         <a class="portfolio-1" href="#">
-                            <img src="{{asset('img/categories/game-2.jpeg')}}" alt="screenshot">
+                            <img src="{{asset('public/img/categories/game-2.jpeg')}}" alt="screenshot">
                             <div class="portfolio-detail">
                             <h5>Elixir Platformer Game</h5>
                             <p>Application</p>
@@ -253,7 +253,7 @@
 
                         <div class="col-6 col-lg-3" data-shuffle="item" data-groups="applications">
                         <a class="portfolio-1" href="#">
-                            <img src="{{asset('img/categories/code.jpeg')}}" alt="screenshot">
+                            <img src="{{asset('public/img/categories/code.jpeg')}}" alt="screenshot">
                             <div class="portfolio-detail">
                             <h5>Magazine</h5>
                             <p>Applications</p>
@@ -294,15 +294,16 @@
           <div class="row gap-y align-items-center">
 
             <div class="col-6 col-lg-3">
-                <a href="{{route('home')}}"><img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo"></a>
+                <a href="{{route('home')}}"><img class="logo-dark" src="{{asset('public/img/logo/yenumcomdark.png')}}" alt="logo"></a>
             </div>
 
             <div class="col-6 col-lg-3 text-right order-lg-last">
               <div class="social">
-                <a class="social-facebook" href="https://www.facebook.com/thethemeio"><i class="fa fa-facebook"></i></a>
-                <a class="social-twitter" href="https://twitter.com/thethemeio"><i class="fa fa-twitter"></i></a>
-                <a class="social-instagram" href="https://www.instagram.com/thethemeio/"><i class="fa fa-instagram"></i></a>
-                <a class="social-dribbble" href="https://dribbble.com/thethemeio"><i class="fa fa-dribbble"></i></a>
+                <a class="social-facebook" href="#"><i class="fa fa-facebook"></i></a>
+                <a class="social-twitter" href="https://twitter.com/officialyenum"><i class="fa fa-twitter"></i></a>
+                <a class="social-instagram" href="https://www.instagram.com/officialyenum/"><i class="fa fa-instagram"></i></a>
+                <a class="social-linkedin" href="https://linkedin.com/in/yenum"><i class="fa fa-linkedin"></i></a>
+                <a class="social-medium" href="https://officialyenum.medium.com/"><i class="fa fa-medium"></i></a>
               </div>
             </div>
 

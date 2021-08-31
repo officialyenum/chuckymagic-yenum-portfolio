@@ -29,8 +29,8 @@
             <div class="navbar-left">
                 <button class="navbar-toggler" type="button">&#9776;</button>
                 <a class="navbar-brand" href="{{route('dashboard')}}">
-                    <img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo">
-                    <img class="logo-light" src="{{asset('img/logo/yenumcomlight.png')}}" alt="logo">
+                    <img class="logo-dark" src="{{asset('public/img/logo/yenumcomdark.png')}}" alt="logo">
+                    <img class="logo-light" src="{{asset('public/img/logo/yenumcomlight.png')}}" alt="logo">
                 </a>
             </div>
 
@@ -84,7 +84,7 @@
         </nav><!-- /.navbar -->
 
         <!-- Header -->
-        <header class="header text-white" style="background-image: url({{asset('img/bg/gameBg.jpg')}})" data-overlay="5">
+        <header class="header text-white" style="background-image: url({{asset('public/img/bg/gameBg.jpg')}})" data-overlay="5">
             <div class="container text-center">
 
             <div class="row">
@@ -99,7 +99,7 @@
         </header><!-- /.header -->
 
         <div id="app">
-            <main class="main-content overflow-auto" style="background-image: url({{asset('img/bg/gameCanvas.jpg')}});background-repeat: no-repeat;background-size: cover;height: 600px;">
+            <main class="main-content overflow-auto" style="background-image: url({{asset('public/img/bg/gameCanvas.jpg')}});background-repeat: no-repeat;background-size: cover;height: 600px;">
                     @yield('content')
             </main>
         </div>

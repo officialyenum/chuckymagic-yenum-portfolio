@@ -9,8 +9,8 @@
         </title>
 
         <!-- Favicons -->
-        <link rel="apple-touch-icon" href={{asset('img/apple-touch-icon.png')}}>
-        <link rel="icon" href={{asset('img/favicon.png')}}>
+        <link rel="apple-touch-icon" href={{asset('public/img/apple-touch-icon.png')}}>
+        <link rel="icon" href={{asset('public/img/favicon.png')}}>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -81,8 +81,8 @@
                     <div class="navbar-left">
                         <button class="navbar-toggler" type="button">&#9776;</button>
                     <a class="navbar-brand" href="{{route('home')}}">
-                            <img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo">
-                            <img class="logo-light" src="{{asset('img/logo/yenumcomlight.png')}}" alt="logo">
+                            <img class="logo-dark" src="{{asset('public/img/logo/yenumcomdark.png')}}" alt="logo">
+                            <img class="logo-light" src="{{asset('public/img/logo/yenumcomlight.png')}}" alt="logo">
                         </a>
                     </div>
 
@@ -215,8 +215,8 @@
                 <div class="navbar-left">
                     <button class="navbar-toggler" type="button">&#9776;</button>
                     <a class="navbar-brand" href="{{route('home')}}">
-                        <img class="logo-light" src="{{asset('img/logo/yenum-logo-main.png')}}" alt="logo">
-                        <img class="logo-dark" src="{{asset('img/logo/yenum-logo-main.png')}}" alt="logo">
+                        <img class="logo-light" src="{{asset('public/img/logo/yenum-logo-main.png')}}" alt="logo">
+                        <img class="logo-dark" src="{{asset('public/img/logo/yenum-logo-main.png')}}" alt="logo">
                     </a>
                 </div>
 
@@ -248,7 +248,7 @@
         <div class="row gap-y align-items-center">
 
         <div class="col-6 col-lg-3">
-            <a href="{{route('home')}}"><img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo"></a>
+            <a href="{{route('home')}}"><img class="logo-dark" src="{{asset('public/img/logo/yenumcomdark.png')}}" alt="logo"></a>
         </div>
 
         <div class="col-6 col-lg-3 text-right order-lg-last">

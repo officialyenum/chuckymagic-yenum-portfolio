@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
 
 </head>
-<body class="layout-centered bg-img" style="background-image: url({{asset('img/yenum/wide-2.jpg')}})">
+<body class="layout-centered bg-img" style="background-image: url({{asset('public/img/yenum/wide-2.jpg')}})">
         @yield('content')
     <!-- Scripts -->
     <script src="{{ asset('public/js/app.js') }}"></script>

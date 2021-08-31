@@ -3,8 +3,8 @@
     <div class="sidebar">
         <!-- Start Logobar -->
         <div class="logobar">
-            <a href="{{ route('admin.index')}}" class="logo logo-large"><img src="{{asset('img/logo/yenum-logo-main.png')}}" class="img-fluid" alt="logo"></a>
-            <a href="{{ route('admin.index')}}" class="logo logo-small"><img src="{{asset('img/logo/yenum-logo-main.png')}}" class="img-fluid" alt="logo"></a>
+            <a href="{{ route('admin.index')}}" class="logo logo-large"><img src="{{asset('public/img/logo/yenum-logo-main.png')}}" class="img-fluid" alt="logo"></a>
+            <a href="{{ route('admin.index')}}" class="logo logo-small"><img src="{{asset('public/img/logo/yenum-logo-main.png')}}" class="img-fluid" alt="logo"></a>
         </div>
         <!-- End Logobar -->
         <!-- Start Navigationbar -->

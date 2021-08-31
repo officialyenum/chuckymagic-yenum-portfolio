@@ -128,7 +128,7 @@
                         <li class="list-inline-item">
                             <div class="profilebar">
                                 <div class="dropdown">
-                                    <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('img/apple-touch-icon.png')}}" class="img-fluid" alt="profile"><span class="live-icon">{{ Auth::user()->username }}</span></a>
+                                    <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('public/img/apple-touch-icon.png')}}" class="img-fluid" alt="profile"><span class="live-icon">{{ Auth::user()->username }}</span></a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
                                         <a class="dropdown-item" href="#"><i class="ri-user-6-line"></i>My Profile</a>
                                         <a class="dropdown-item" href="#"><i class="ri-mail-line"></i>Email</a>

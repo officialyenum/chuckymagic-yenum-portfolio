@@ -11,7 +11,7 @@
 
     <div class="bg-white rounded shadow-7 w-400 mw-100 p-6">
         <div class="text-center mb-2">
-            <img class="logo-light" src="{{asset('img/logo/yenum-logo-main.png')}}" alt="logo">
+            <img class="logo-light" src="{{asset('public/img/logo/yenum-logo-main.png')}}" alt="logo">
         </div>
         <h5 class="mb-7">Sign into your account</h5>
 
