@@ -4,10 +4,10 @@
 @extends('layouts.admin')
 @section('styles')
     <!-- Apex css -->
-    <link href="{{ asset('public/assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/apexcharts/apexcharts.css') }}" rel="stylesheet" type="text/css" />
     <!-- Slick css -->
-    <link href="{{ asset('public/assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('public/assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('rightbar-content')
@@ -260,10 +260,10 @@
 @endsection
 @section('scripts')
     <!-- Apex js -->
-    <script src="{{ asset('public/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('public/assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
+    <script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/apexcharts/irregular-data-series.js') }}"></script>
     <!-- Slick js -->
-    <script src="{{ asset('public/assets/plugins/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/slick/slick.min.js') }}"></script>
     <!-- Custom Dashboard js -->
-    <script src="{{ asset('public/assets/js/custom/custom-dashboard.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/custom-dashboard.js') }}"></script>
 @endsection

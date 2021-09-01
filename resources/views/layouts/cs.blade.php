@@ -16,9 +16,9 @@
 
         <!-- Styles -->
         @yield('css')
-        <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('public/css/page.min.css')}}" rel="stylesheet">
-        <link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/page.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('css/style.css')}}" rel="stylesheet">
 
     </head>
     <body>
@@ -29,8 +29,8 @@
             <div class="navbar-left">
                 <button class="navbar-toggler" type="button">&#9776;</button>
                 <a class="navbar-brand" href="{{route('dashboard')}}">
-                    <img class="logo-dark" src="{{asset('public/img/logo/yenumcomdark.png')}}" alt="logo">
-                    <img class="logo-light" src="{{asset('public/img/logo/yenumcomlight.png')}}" alt="logo">
+                    <img class="logo-dark" src="{{asset('img/logo/yenumcomdark.png')}}" alt="logo">
+                    <img class="logo-light" src="{{asset('img/logo/yenumcomlight.png')}}" alt="logo">
                 </a>
             </div>
 
@@ -84,7 +84,7 @@
         </nav><!-- /.navbar -->
 
         <!-- Header
-        <header class="header text-white" style="background-image: url({{asset('public/img/bg/gameBg.jpg')}})" data-overlay="5">
+        <header class="header text-white" style="background-image: url({{asset('img/bg/gameBg.jpg')}})" data-overlay="5">
             <div class="container text-center">
 
             <div class="row">
@@ -99,7 +99,7 @@
         </header> /.header -->
 
         <div id="app">
-            <main class="main-content overflow-auto" style="background-image: url({{asset('public/img/bg/gameCanvas.jpg')}});background-repeat: no-repeat;background-size: cover;height: 150px;">
+            <main class="main-content overflow-auto" style="background-image: url({{asset('img/bg/gameCanvas.jpg')}});background-repeat: no-repeat;background-size: cover;height: 150px;">
                     @yield('content')
             </main>
         </div>
@@ -108,8 +108,8 @@
         <!-- Popper -->
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
         <!-- Scripts -->
-        <script src="{{ asset('public/js/app.js') }}"></script>
-        <script src="{{asset('public/js/script.js')}}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{asset('js/script.js')}}"></script>
         @yield('scripts')
     </body>
 </html>

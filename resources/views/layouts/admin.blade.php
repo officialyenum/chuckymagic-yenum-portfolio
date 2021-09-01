@@ -13,11 +13,11 @@
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
         <!-- Start CSS -->
         @yield('styles')
-        <link href="{{ asset('public/assets/plugins/switchery/switchery.min.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('public/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('public/assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
-        <link href="{{ asset('public/assets/css/style.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/plugins/switchery/switchery.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
         <!-- End CSS -->
     </head>
     <body class="vertical-layout">
@@ -77,16 +77,16 @@
         </div>
         <!-- End Containerbar -->
         <!-- Start JS -->
-        <script src="{{ asset('public/assets/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('public/assets/js/popper.min.js') }}"></script>
-        <script src="{{ asset('public/assets/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('public/assets/js/modernizr.min.js') }}"></script>
-        <script src="{{ asset('public/assets/js/detect.js') }}"></script>
-        <script src="{{ asset('public/assets/js/jquery.slimscroll.js') }}"></script>
-        <script src="{{ asset('public/assets/js/vertical-menu.js') }}"></script>
-        <script src="{{ asset('public/assets/plugins/switchery/switchery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+        <script src="{{ asset('assets/js/detect.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+        <script src="{{ asset('assets/js/vertical-menu.js') }}"></script>
+        <script src="{{ asset('assets/plugins/switchery/switchery.min.js') }}"></script>
         <!-- Core JS -->
-        <script src="{{ asset('public/assets/js/core.js') }}"></script>
+        <script src="{{ asset('assets/js/core.js') }}"></script>
         @yield('scripts')
         <!-- End JS -->
     </body>

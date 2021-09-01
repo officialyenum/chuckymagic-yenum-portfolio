@@ -25,7 +25,7 @@
             </div>
 
             <div class="col-lg-5 mt-5 ml-auto d-none d-lg-block">
-                <img class="rounded w-100 h-100 cover" src="{{asset('public/img/yenum/portrait-4.jpg')}}" alt="img">
+                <img class="rounded w-100 h-100 cover" src="{{asset('img/yenum/portrait-4.jpg')}}" alt="img">
             </div>
 
         </div>
@@ -33,7 +33,7 @@
     </header><!-- /.header -->
 
       <!-- Header -->
-      <header class="header text-white" style="background-image: url({{asset('public/img/yenum/wide-2.jpg')}})" data-overlay="8">
+      <header class="header text-white" style="background-image: url({{asset('img/yenum/wide-2.jpg')}})" data-overlay="8">
         <div class="container text-center">
 
           <div class="row">
