@@ -34,7 +34,7 @@ class UserAction
 
     public static function update($request, $id)
     {
-        DB::transaction(function ($request, $id) {
+        return DB::transaction(function ($request, $id) {
             $user = User::find($id);
             $user->username = $request->username ?? $user->username;
             $user->lastname = $request->lastname ?? $user->lastname;
@@ -47,7 +47,57 @@ class UserAction
             $user->email = $request->email ?? $user->avatar;
             $user->role_id = 4 ?? $user->role_id;
             $user->password = Hash::make($request->password) ?? $user->password;
-            $user->save();
+            $user->update();
+            return $user;
+        });
+    }
+
+    public static function verify($request, $id)
+    {
+        return DB::transaction(function ($request, $id) {
+            $user = User::find($id);
+            $user->verified = $request->verified ?? $user->verified;
+            $user->update();
+            return $user;
+        });
+    }
+
+    public static function subscribe($request, $id)
+    {
+        return DB::transaction(function ($request, $id) {
+            $user = User::find($id);
+            $user->subscribed = $request->subscribed ?? $user->subscribed;
+            $user->update();
+            return $user;
+        });
+    }
+
+    public static function makeUser($id)
+    {
+        return DB::transaction(function ($id) {
+            $user = User::find($id);
+            $user->role_id = 3;
+            $user->update();
+            return $user;
+        });
+    }
+
+    public static function makeWriter($id)
+    {
+        return DB::transaction(function ($id) {
+            $user = User::find($id);
+            $user->role_id = 3;
+            $user->update();
+            return $user;
+        });
+    }
+
+    public static function makeAdmin($id)
+    {
+        return DB::transaction(function ($id) {
+            $user = User::find($id);
+            $user->role_id = 2;
+            $user->update();
             return $user;
         });
     }

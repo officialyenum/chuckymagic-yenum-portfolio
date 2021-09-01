@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Action\UserAction;
 use App\Query\UserQueries;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -225,55 +226,128 @@ class UsersController extends Controller
 
     public function makeWriter(User $user)
     {
-        $user->role_id = 3;
-        $user->save();
-        session()->flash('success','User made Admin Successfully');
-        return redirect()->route('users.index');
+        try {
+            //code...
+            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+                # code...
+                UserAction::makeWriter($user->id);
+                session()->flash('success','User made Admin Successfully');
+                return redirect()->back();
+            }
+            session()->flash('error','Only An Administrator can make Writer');
+            return redirect()->back();
+        } catch (Exception $e) {
+            //Exception $e;
+            session()->flash('error', $e->getMessage());
+            session()->flash('alert-class', 'alert-danger');
+            return redirect()->back();
+        }
     }
 
     public function makeAdmin(User $user)
     {
-        $user->role_id = 2;
-        $user->save();
-        session()->flash('success','User made Admin Successfully');
-        return redirect()->route('users.index');
+        try {
+            //code...
+            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+                # code...
+                UserAction::makeAdmin($user->id);
+                session()->flash('success','User made Admin Successfully');
+                return redirect()->back();
+            }
+            session()->flash('error','Only A Super Administrator can make You an Administrator');
+            return redirect()->back();
+        } catch (Exception $e) {
+            //Exception $e;
+            session()->flash('error', $e->getMessage());
+            session()->flash('alert-class', 'alert-danger');
+            return redirect()->back();
+        }
     }
 
     public function makeSuperAdmin(User $user)
     {
-        $user->role_id = 1;
-        $user->save();
-        session()->flash('success','User made Admin Successfully');
-        return redirect()->route('users.index');
+        try {
+            //code...
+            if (Auth::user()->role_id == 1) {
+                # code...
+                UserAction::makeSuperAdmin($user->id);
+                session()->flash('success','User made Admin Successfully');
+                return redirect()->back();
+            }
+            session()->flash('error','Only A Super Administrator can make Another Super Administrator');
+            return redirect()->back();
+        } catch (Exception $e) {
+            //Exception $e;
+            session()->flash('error', $e->getMessage());
+            session()->flash('alert-class', 'alert-danger');
+            return redirect()->back();
+        }
 
     }
 
     public function removeWriter(User $user)
     {
-        $user->role_id = 4;
-        $user->save();
-        session()->flash('success','User made Admin Successfully');
-        return redirect()->route('users.index');
+        try {
+            //code...
+            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+                # code...
+                UserAction::makeUser($user->id);
+                session()->flash('success','User Writer Access Revoked Successfully');
+                return redirect()->back();
+            }
+            session()->flash('error','Only An Administrator can revoke writer Access');
+            return redirect()->back();
+        } catch (Exception $e) {
+            //Exception $e;
+            session()->flash('error', $e->getMessage());
+            session()->flash('alert-class', 'alert-danger');
+            return redirect()->back();
+        }
     }
 
     public function removeAdmin(User $user)
     {
-        $user->role_id = 3;
-        $user->save();
-        session()->flash('success','User Admin priviledge Successfully removed');
-        return redirect()->route('users.index');
+        try {
+            //code...
+            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+                # code...
+                UserAction::makeUser($user->id);
+                session()->flash('success','User Admin priviledge Successfully revoked');
+                return redirect()->back();
+            }
+            session()->flash('error','Only A Super Administrator can revoke Administrator Priviledges');
+            return redirect()->back();
+        } catch (Exception $e) {
+            //Exception $e;
+            session()->flash('error', $e->getMessage());
+            session()->flash('alert-class', 'alert-danger');
+            return redirect()->back();
+        }
     }
 
     public function removeSuperAdmin(User $user)
     {
-        if ($user->id == 1) {
-            session()->flash('success',"You don\'t remove God, Yenum is supreme here");
-            return redirect()->route('users.index');
+        try {
+            //code...
+            if ($user->id == 1) {
+                # code...
+                session()->flash('success',"You don\'t remove God, Yenum is supreme here");
+                return redirect()->back();
+            }
+            if ( Auth::user()->id == 1 && (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)) {
+                # code...
+                UserAction::makeUser($user->id);
+                session()->flash('success','User Super Admin priviledge Successfully removed');
+                return redirect()->back();
+            }
+            session()->flash('error','Only Yenum can revoke another Super Administrator Priviledges');
+            return redirect()->back();
+        } catch (Exception $e) {
+            //Exception $e;
+            session()->flash('error', $e->getMessage());
+            session()->flash('alert-class', 'alert-danger');
+            return redirect()->back();
         }
-        $user->role_id = 2;
-        $user->save();
-        session()->flash('success','User Super Admin priviledge Successfully removed');
-        return redirect()->route('users.index');
 
     }
 }

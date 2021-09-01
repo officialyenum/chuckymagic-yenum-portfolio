@@ -54,6 +54,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::post('users/{user}/make-super-admin', 'Admin\UsersController@makeSuperAdmin')->name('users.make-super-admin');
     Route::post('users/{user}/remove-super-admin', 'Admin\UsersController@removeSuperAdmin')->name('users.remove-super-admin');
     Route::resource('users', 'Admin\UsersController');
+
+    // Post Management
+    Route::resource('posts', 'Admin\PostsController');
+    Route::get('trashed-posts', 'Admin\PostsController@trashed')->name('trashed-posts.index');
+    Route::put('restore-posts/{post}', 'Admin\PostsController@restore')->name('restore-posts');
+    Route::put('posts/{post}/categories', 'Admin\PostsController@categories')->name('post.categories');
+    Route::put('posts/{post}/tags', 'Admin\PostsController@tags')->name('post.tags');
+    //Category Management
+    Route::resource('categories', 'Admin\CategoriesController');
+    //Tag Management
+    Route::resource('categories', 'Admin\TagsController');
+    //Media Management
+    Route::resource('media', 'Admin\MediaController');
 });
 
 //Games

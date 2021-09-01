@@ -34,9 +34,9 @@
                         <i class="ri-pencil-ruler-line"></i><span>Posts</span><i class="ri-arrow-right-s-line"></i>
                     </a>
                     <ul class="vertical-submenu">
-                        <li><a href="{{url('/basic-ui-kits-alerts')}}">All</a></li>
-                        <li><a href="{{url('/basic-ui-kits-badges')}}">This Week</a></li>
-                        <li><a href="{{url('/basic-ui-kits-buttons')}}">Create</a></li>
+                        <li><a href="{{ route('posts.index')}}">All</a></li>
+                        <li><a href="{{ route('posts.create')}}">Create</a></li>
+                        <li><a href="{{ route('trashed-posts.index')}}">Trash</a></li>
                     </ul>
                 </li>
                 <li>

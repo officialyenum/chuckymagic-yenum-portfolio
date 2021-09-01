@@ -68,6 +68,7 @@
         <!-- Start Containerbar -->
         <div id="containerbar">
             <!-- Start Leftbar -->
+            @include('layouts.toastr-script')
             @include('layouts.admin-leftbar')
             <!-- End Leftbar -->
             <!-- Start Rightbar -->

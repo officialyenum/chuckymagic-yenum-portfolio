@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Projects;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
 
 class CreatePostRequest extends FormRequest
 {
@@ -24,11 +25,23 @@ class CreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-
-            'title' => 'required|unique:projects',
-            'description' => 'required|max:200',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:2560',
-            'category' => 'required',
+            'title' => 'required|max:255|unique:posts,title',
+            'description' => 'required|max:255',
+            'image' => 'required|image|mimes:jpg,jpeg,png|max:5120',
+            'content' => 'required',
+            'category' => 'required'
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function formatErrors(Validator $validator)
+    {
+
+        return response()->json([
+            'status' => 'error',
+            'message' => $validator->errors()->first()
+        ]);
     }
 }

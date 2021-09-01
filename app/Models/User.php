@@ -70,22 +70,22 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->role_id === $this->ROLE_ADMIN;
+        return $this->role_id == $this->ROLE_ADMIN;
     }
 
     public function isSuperAdmin()
     {
-        return $this->role_id === $this->ROLE_SUPERADMIN;
+        return $this->role_id == $this->ROLE_SUPERADMIN;
     }
 
     public function isWriter()
     {
-        return $this->role_id === $this->ROLE_WRITER;
+        return $this->role_id == $this->ROLE_WRITER;
     }
 
     public function isGuest()
     {
-        return $this->role_id === $this->ROLE_USER;
+        return $this->role_id == $this->ROLE_USER;
     }
 
     public function isVerified()

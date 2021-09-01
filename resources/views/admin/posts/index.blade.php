@@ -1,75 +1,48 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('content')
-    <div class="card card-header">
-        <div class="card-header">
-            <h2>Posts</h2>
-        </div>
-        @if ($projects->count() > 0 )
-            <div class="card-body">
-                <table class="table">
-                    <thead>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th></th>
-                        <th></th>
-                    </thead>
-                    <tbody>
-                        @foreach ($posts as $post)
-                            <tr>
-                                <td>
-                                    <img src="{{ $post->image_url }}" alt="post image" width="40px"  height="40px">
-                                </td>
-                                <td>
-                                    {{ $post->title }}
-                                </td>
-                                <td>
-                                    <a href="{{route('categories.edit', $post->category->slug)}}">{{ $post->category->name}}</a>
-                                </td>
-                                <td>
-                                    @if ($post->trashed())
-                                            <form action="{{route('restore-posts', $post->slug)}}" method="POST">
-                                                @csrf
-                                                @method('PUT')
-                                                <button type="submit"  class="btn btn-primary float-right ml-1">Restore</button>
-                                            </form>
-                                    @else
-                                            <a href="{{ route('posts.edit', $post->slug)}}"  class="btn btn-primary float-right ml-1">Edit</a>
-                                    @endif
-
-                                </td>
-                                <td>
-                                    @if ($post->trashed())
-                                        <button class="btn btn-danger float-right ml-1" onclick="handleDelete({{ $post->id }})">Delete</button>
-                                    @else
-                                        <form action="{{ route('posts.destroy', $post->slug)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger float-right ml-1">
-                                                Trash
-                                            </button>
-                                        </form>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+@section('title')
+    <!-- Start Breadcrumbbar -->
+    <div class="breadcrumbbar">
+        <div class="row align-items-center">
+            <div class="col-md-8 col-lg-8">
+                <h4 class="page-title">Post Management</h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Posts</li>
+                    </ol>
+                </div>
             </div>
-        @else
-            <h3 class="text-center">No Posts Yet</h3>
-        @endif
+            <div class="col-md-4 col-lg-4">
+                <div class="widgetbar">
+                    <button class="btn btn-primary"><i class="ri-add-line align-middle mr-2"></i>ADD</button>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- End Breadcrumbbar -->
+@endsection
+
+@section('styles')
+    <!-- DataTables css -->
+    <link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Responsive Datatable css -->
+    <link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
+
+@section('rightbar-content')
+
+    @include('admin.tables.post-table',['title'=> 'Posts','posts' => $posts])
 
     <div class="modal fade" id="deleteModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-        <form action="" method="POST" id="deletePostForm">
+        <form action="" method="POST" id="deleteUserForm">
                 @csrf
                 @method('DELETE')
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Delete Project</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Delete Post</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -93,11 +66,24 @@
 @endsection
 
 @section('scripts')
-
+<!-- Datatable js -->
+    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/custom-table-datatable.js') }}"></script>
     <script>
         function handleDelete(id) {
-            var form = document.getElementById('deletePostForm')
-            form.action = 'projects/' + id
+            var form = document.getElementById('deleteUserForm')
+            form.action = 'posts/' + id
             console.log('deleting', form);
 
             $('#deleteModal').modal('show')

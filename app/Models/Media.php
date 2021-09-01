@@ -13,6 +13,26 @@ class Media extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class);
+    }
+
+    public function postContent()
+    {
+        return $this->belongsTo(Post::class);
+    }
+
     public function deleteImage()
     {
         Storage::disk('s3')->delete($this->image);

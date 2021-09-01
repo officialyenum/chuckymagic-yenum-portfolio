@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -24,6 +25,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
+            # code...
+            return view('admin.index');
+        }
+        return view('auth.login');
     }
 }

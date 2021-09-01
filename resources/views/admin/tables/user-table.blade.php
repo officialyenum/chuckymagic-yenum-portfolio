@@ -45,57 +45,58 @@
                                 </td>
                                 <td>
                                     {{ $user->role->name }}
-                                    @if ($user->isAdmin())
-                                        <form action="{{route('users.make-super-admin', $user->id) }}" method="POST">
+                                    @if ($user->role_id === 2)
+                                        <form action="{{route('users.make-super-admin', $user) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-success btn-sm">Make Super Admin</button>
+                                            <button type="submit" class="float-left btn btn-rounded btn-success-rgba"><small style="font-size: 8"> Make Super Admin</small></button>
+
                                         </form>
-                                        <form action="{{route('users.remove-admin', $user->id) }}" method="POST">
+                                        <form action="{{route('users.remove-admin', $user) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm">Remove Admin</button>
+                                            <button type="submit" class="float-left btn btn-rounded btn-danger-rgba"><small style="font-size: 8"> Remove Admin</small></button>
                                         </form>
                                     @endif
-                                    @if ($user->isSuperAdmin())
+                                    @if ($user->role_id === 1)
                                         @if ($user->id == 1)
                                         @else
-                                            <form action="{{route('users.remove-super-admin', $user->id) }}" method="POST">
+                                            <form action="{{route('users.remove-super-admin', $user) }}" method="POST">
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger btn-sm">Remove Super Admin</button>
+                                                <button type="submit" class="float-left btn btn-rounded btn-danger-rgba" style="font-size: 10"><small style="font-size: 10"> Remove Super Admin</small></button>
                                             </form>
                                         @endif
                                     @endif
-                                    @if ($user->isWriter())
-                                        <form action="{{route('users.make-admin', $user->id) }}" method="POST">
+                                    @if ($user->role_id === 3)
+                                        <form action="{{route('users.make-admin', $user) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-success btn-sm">Make Admin</button>
+                                            <button type="submit" class="btn btn-rounded btn-success-rgba" style="font-size: 10"><small style="font-size: 10"> Make Admin</small></button>
                                         </form>
-                                        <form action="{{route('users.remove-writer', $user->id) }}" method="POST">
+                                        <form action="{{route('users.remove-writer', $user) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-sm">Remove Writer</button>
+                                            <button type="submit" class="btn btn-rounded btn-danger-rgba" style="font-size: 10"><small style="font-size: 10"> Remove Writer</small></button>
                                         </form>
                                     @endif
-                                    @if ($user->isGuest())
-                                        <form action="{{route('users.make-writer', $user->id) }}" method="POST">
+                                    @if ($user->role_id === 4)
+                                        <form action="{{route('users.make-writer', $user) }}" method="POST">
                                             @csrf
-                                            <button type="submit" class="btn btn-success btn-sm">Make Writer</button>
+                                            <button type="submit" class="btn btn-rounded btn-success-rgba" style="font-size: 10"><small style="font-size: 10"> Make Writer</small></button>
                                         </form>
                                     @endif
                                 </td>
                                 <td>
                                     @if ($user->trashed())
-                                        <form action="{{route('restore-users', $user->id)}}" method="POST">
+                                        <form action="{{route('restore-users', $user)}}" method="POST">
                                             @csrf
                                             @method('PUT')
-                                            <button type="submit"  class="btn btn-primary float-right ml-1">Restore</button>
+                                            <button type="submit"  class="btn btn-primary btn-xs" style="font-size: 10"><i class="fa fa-recycle" aria-hidden="true"></i></button>
                                         </form>
-                                        <button class="btn btn-danger float-right ml-1" onclick="handleDelete({{ $user->id }})">Delete</button>
+                                        <button class="btn btn-warning btn-xs" style="font-size: 10" onclick="handleDelete({{ $user->id }})"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                     @else
-                                        <a href="{{ route('users.edit', $user->id)}}"  class="btn btn-primary float-right ml-1">Edit</a>
-                                        <form action="{{ route('users.destroy', $user->id)}}" method="POST">
+                                        <a href="{{ route('users.edit', $user)}}"  class="btn btn-primary btn-xs" style="font-size: 10"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <form action="{{ route('users.destroy', $user)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger float-right ml-1">
-                                                Trash
+                                            <button type="submit" class="btn btn-danger btn-xs" style="font-size: 10">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
                                             </button>
                                         </form>
                                     @endif
