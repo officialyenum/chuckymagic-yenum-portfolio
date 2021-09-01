@@ -16,21 +16,21 @@ class HomeController extends Controller
         return view('welcome');
     }
 
-    // public function index()
-    // {
-    //     $search = request()->query('search');
-    //     return view('dashboard.index')
-    //         ->with('search', $search)
-    //         ->with('categories', Category::all())
-    //         ->with('tags',Tag::all())
-    //         ->with('posts', Post::searched()->simplePaginate(4));
-    // }
-
     public function index()
     {
-        // $search = request()->query('search');
-        return view('auth.login');
+        $search = request()->query('search');
+        return view('dashboard.index')
+            ->with('search', $search)
+            ->with('categories', Category::all())
+            ->with('tags',Tag::all())
+            ->with('posts', Post::searched()->simplePaginate(4));
     }
+
+    // public function index()
+    // {
+    //     // $search = request()->query('search');
+    //     return view('auth.login');
+    // }
 
     public function show(Post $post)
     {
