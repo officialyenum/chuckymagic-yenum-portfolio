@@ -35,8 +35,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('categories', 'Admin\CategoriesController');
     Route::resource('posts', 'Admin\PostsController');
     Route::resource('tags', 'Admin\TagsController');
-    Route::get('trashed-post', 'Admin\PostsController@trashed')->name('trashed-posts.index');
-    Route::put('restore-posts/{post}', 'Admin\PostsController@restore')->name('restore-posts');
+    // Route::get('trashed-post', 'Admin\PostsController@trashed')->name('trashed-posts.index');
+    // Route::put('restore-posts/{post}', 'Admin\PostsController@restore')->name('restore-posts');
     //content Image
     // Route::post('post/upload', 'ImageController@uploadFile');
 
