@@ -20,7 +20,7 @@
             <p class="lead mt-2 mb-6">I have a serious passion for building Games and creating solutions to complex problems, I write sometimes, Arsenal Super Fan and an Anime Freak. My ultimate quest is to develop web, mobile and console games that will blow your mind.</p>
             <p class="gap-xy">
                 <a class="btn btn-round btn-primary mw-200" href="https://yenum.dev/cv/chukwuyenum.pdf" target="_blank">My — CV</a>
-                <a class="btn btn-round btn-outline-secondary mw-200" href="#portfolio">Learn more</a>
+                <a class="btn btn-round btn-outline-secondary mw-200" href="#portfolio">Learn now</a>
             </p>
             </div>
 
