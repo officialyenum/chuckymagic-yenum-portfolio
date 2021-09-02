@@ -18,20 +18,27 @@ class MediaAction
             $s3 = Storage::disk('s3');
             $path = '/yenum/uploads/post/'.$filename;
 
-            $s3->put($path, file_get_contents($image), 'public');
+            $pathExists = Media::where('path',$path)->exists();
+            if (!$pathExists) {
+                $s3->put($path, file_get_contents($image), 'public');
 
-            $media = new Media();
-            $media->title = $filename;
-            $media->slug = Str::slug($filename);
-            $media->url = $s3->url($path);
-            $media->path = $path;
-            $media->description = $description;
-            $media->size = $image->getSize();
-            $media->mimeType = $image->getMimeType();
-            $media->post_id = $id;
-            $media->user_id = Auth::id();
-            $media->save();
-            return $media;
+                $media = new Media();
+                $media->title = $filename;
+                $media->slug = Str::slug($filename);
+                $media->url = $s3->url($path);
+                $media->path = $path;
+                $media->description = $description;
+                $media->size = $image->getSize();
+                $media->mimeType = $image->getMimeType();
+                $media->post_id = $id;
+                $media->user_id = Auth::id();
+                $media->save();
+                return $media;
+            } else {
+                $media = Media::where('path',$path)->first();
+                return $media;
+            }
+
         });
     }
 
@@ -42,20 +49,26 @@ class MediaAction
             $s3 = Storage::disk('s3');
             $path = '/yenum/uploads/category/'.$filename;
 
-            $s3->put($path, file_get_contents($image), 'public');
+            $pathExists = Media::where('path',$path)->exists();
+            if (!$pathExists) {
+                $s3->put($path, file_get_contents($image), 'public');
 
-            $media = new Media();
-            $media->title = $filename;
-            $media->slug = Str::slug($filename);
-            $media->url = $s3->url($path);
-            $media->path = $path;
-            $media->description = $description;
-            $media->size = $image->getSize();
-            $media->mimeType = $image->getMimeType();
-            $media->category_id = $id;
-            $media->user_id = Auth::id();
-            $media->save();
-            return $media;
+                $media = new Media();
+                $media->title = $filename;
+                $media->slug = Str::slug($filename);
+                $media->url = $s3->url($path);
+                $media->path = $path;
+                $media->description = $description;
+                $media->size = $image->getSize();
+                $media->mimeType = $image->getMimeType();
+                $media->category_id = $id;
+                $media->user_id = Auth::id();
+                $media->save();
+                return $media;
+            } else {
+                $media = Media::where('path',$path)->first();
+                return $media;
+            }
         });
     }
 
@@ -66,20 +79,26 @@ class MediaAction
             $s3 = Storage::disk('s3');
             $path = '/yenum/uploads/tag/'.$filename;
 
-            $s3->put($path, file_get_contents($image), 'public');
+            $pathExists = Media::where('path',$path)->exists();
+            if (!$pathExists) {
+                $s3->put($path, file_get_contents($image), 'public');
 
-            $media = new Media();
-            $media->title = $filename;
-            $media->slug = Str::slug($filename);
-            $media->url = $s3->url($path);
-            $media->path = $path;
-            $media->description = $description;
-            $media->size = $image->getSize();
-            $media->mimeType = $image->getMimeType();
-            $media->tag_id = $id;
-            $media->user_id = Auth::id();
-            $media->save();
-            return $media;
+                $media = new Media();
+                $media->title = $filename;
+                $media->slug = Str::slug($filename);
+                $media->url = $s3->url($path);
+                $media->path = $path;
+                $media->description = $description;
+                $media->size = $image->getSize();
+                $media->mimeType = $image->getMimeType();
+                $media->category_id = $id;
+                $media->user_id = Auth::id();
+                $media->save();
+                return $media;
+            } else {
+                $media = Media::where('path',$path)->first();
+                return $media;
+            }
         });
     }
 

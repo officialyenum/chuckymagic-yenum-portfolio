@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Actions;
 
 use App\Models\Media;
 use App\Models\Post;
@@ -19,7 +19,7 @@ class UserAction
     public static function create($request)
     {
 
-        DB::transaction(function ($request) {
+        DB::transaction(function () use ($request) {
             $user = new User;
             $user->username = $request->username;
             $user->firstname = $request->firstname;
@@ -34,7 +34,7 @@ class UserAction
 
     public static function update($request, $id)
     {
-        return DB::transaction(function ($request, $id) {
+        return DB::transaction(function () use ($request, $id) {
             $user = User::find($id);
             $user->username = $request->username ?? $user->username;
             $user->lastname = $request->lastname ?? $user->lastname;
@@ -64,7 +64,7 @@ class UserAction
 
     public static function subscribe($request, $id)
     {
-        return DB::transaction(function ($request, $id) {
+        return DB::transaction(function () use ($request, $id) {
             $user = User::find($id);
             $user->subscribed = $request->subscribed ?? $user->subscribed;
             $user->update();
@@ -74,7 +74,7 @@ class UserAction
 
     public static function makeUser($id)
     {
-        return DB::transaction(function ($id) {
+        return DB::transaction(function () use ($id) {
             $user = User::find($id);
             $user->role_id = 3;
             $user->update();
@@ -84,7 +84,7 @@ class UserAction
 
     public static function makeWriter($id)
     {
-        return DB::transaction(function ($id) {
+        return DB::transaction(function () use ($id) {
             $user = User::find($id);
             $user->role_id = 3;
             $user->update();
@@ -94,7 +94,7 @@ class UserAction
 
     public static function makeAdmin($id)
     {
-        return DB::transaction(function ($id) {
+        return DB::transaction(function () use ($id) {
             $user = User::find($id);
             $user->role_id = 2;
             $user->update();

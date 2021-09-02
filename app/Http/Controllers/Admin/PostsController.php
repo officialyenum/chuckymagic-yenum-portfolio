@@ -52,121 +52,36 @@ class PostsController extends Controller
             ->with('tags', Tag::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function testStore(CreatePostRequest $request)
+    public function store(Request $request, PostAction $postAction, MediaAction $mediaAction)
     {
-        //dd($request->file('image')->store('posts'));
-        // upload the image
-        //$extension = $request->image->extension();
-        //$image = Storage::putFileAs('posts', $request->image, time().'.'.$extension);
-        $image = $request->file('image')->store(
-            'posts',
-            's3'
-        );
-        //dd(Storage::disk('s3')->url($image));
-        //set Image Visibility private
-        //Storage::disk('s3')->setVisibility($image,'private');
-        //set Image Visibility public
-        //Storage::disk('s3')->setVisibility($image,'public');
-        // create the post
-        $post = Post::Create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'content' => $request->content,
-            'published_at' => $request->published_at,
-            'category_id' => $request->category,
-            'user_id' => auth()->user()->id,
-            'github_url' => $request->github_url,
-            'playstore_url' => $request->playstore_url,
-            'appstore_url' => $request->appstore_url,
-            'web_url' => $request->web_url,
-            'featured_image' => Storage::disk('s3')->url($image)
-        ]);
-
-        if ($request->tags) {
-            $post->tags()->attach($request->tags);
-        }
-
-        // flash the message
-        session()->flash('success', 'Post created successfully');
-
-        // redirect the user
-        return redirect(route('posts.index'));
-    }
-
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255|unique:posts,title',
-            'description' => 'required|max:255',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:5120',
-            'content' => 'required',
-            'category' => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            session()->flash('error', $validator->messages()->first());
-            return redirect()->back();
-            // return response()->json(['message' => $validator->messages()->first()], 422);
-        }
         try {
-            //code...
-            $image = $request->file('image');
-            // PostAction::create($request, $image);
-            //create post;
-            $post = new Post;
-            $post->title = $request->title;
-            $post->slug = Str::slug($request->title);
-            $post->description = $request->description;
-            $post->category_id = $request->category;
-            $post->content = "no content yet";
-            $post->github_url = $request->github_url ?? null;
-            $post->playstore_url = $request->playstore_url ?? null;
-            $post->appstore_url = $request->appstore_url ?? null;
-            $post->web_url = $request->web_url ?? null;
-            $post->published_at = $request->published_at;
-            $post->user_id = auth()->user()->id;
-            $post->save();
-            //save post featured image;
-            // $media = MediaAction::post($image, $post->id, "New pOST iMAGE");
-            $media = MediaAction::post($image, $post->id, $image->getClientOriginalName() . ' Image for' . $post->title . ' Post');
-            $post->featured_image = $media->url;
-            $post->update();
-
-            // get post content images and save
-            $detail = $request->content;
-            libxml_use_internal_errors(true);
-            $dom = new \DOMDocument();
-            $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-            $images = $dom->getElementsByTagName('img');
-
-            //save post content media;
-            foreach ($images as $count => $image) {
-                $src = $image->getAttribute('src');
-                if (preg_match('/data:image/', $src)) {
-                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                    $mimeType = $groups['mime'];
-                    $path = '/yenum/uploads/post-content/'.time() .'/' . uniqid('', true) . '.' . $mimeType;
-                    $pathExists = Media::where('path', '=' ,$path)->exists();
-
-                    if (!$pathExists) {
-                        $contentMedia = MediaAction::postContent($path, $src, $mimeType, $post->id,' Image for' . $post->title . ' Content Post');
-                        $image->removeAttribute('src');
-                        $image->setAttribute('src', $contentMedia->url);
-                    }
-                }
+            //validate input
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|max:255|unique:posts,title',
+                'description' => 'required|max:255',
+                'image' => 'required|image|mimes:jpg,jpeg,png|max:5120',
+                'content' => 'required',
+                'category' => 'required',
+            ]);
+            //check if validation fails
+            if ($validator->fails()) {
+                session()->flash('error', $validator->messages()->first());
+                return redirect()->back();
             }
-            // save post content
-            $post->content = $dom->savehtml();
-            $post->update();
+            //get Featured image
+            $image = $request->file('image');
+            //create post;
+            $post = $postAction->create($request);
+            //store featured image media;
+            $media = $mediaAction->post($image, $post->id, $image->getClientOriginalName() . ' Image for ' . $post->title . ' Post Content');
+            //update featured image media
+            $postAction->updateMedia($media->url, $post);
+            // update post content and Media
+            $post = $postAction->updateContent($request->content, $post);
             // add tags to post
             if ($request->tags) {
-                $post->tags()->attach($request->tags);
+                $postAction->updateTag($request->tags,$post);
+                // $post->tags()->attach($request->tags);
             }
             // flash the message
             session()->flash('success', 'Post created successfully');
@@ -198,7 +113,8 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post)
+        return view('admin.posts.create')
+            ->with('post', $post)
             ->with('categories', Category::all())
             ->with('tags', Tag::all());
     }
@@ -210,21 +126,46 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update(Request $request, Post $post, PostAction $postAction, MediaAction $mediaAction)
     {
         try {
-            //code...
-            $post = PostAction::update($request, $post->id);
-            session()->flash('success', 'Post Updated Successfully');
-            //redirect user
-            return redirect(route('admin.posts.index'));
+            //validate input
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|max:255|unique:posts,title',
+                'description' => 'required|max:255',
+                'image' => 'required|image|mimes:jpg,jpeg,png|max:5120',
+                'content' => 'required',
+                'category' => 'required',
+            ]);
+            //check if validation fails
+            if ($validator->fails()) {
+                session()->flash('error', $validator->messages()->first());
+                return redirect()->back();
+            }
+            //get Featured image
+            $image = $request->file('image');
+            //create post;
+            $post = $postAction->update($request, $post->id);
+            //store featured image media;
+            $media = $mediaAction->post($image, $post->id, $image->getClientOriginalName() . ' Image for ' . $post->title . ' Post Content ');
+            //update featured image media
+            $postAction->updateMedia($media->url, $post);
+            // update post content and Media
+            $post = $postAction->updateContent($request->content, $post);
+            // add tags to post
+            if ($request->tags) {
+                $postAction->updateTag($request->tags,$post);
+                // $post->tags()->attach($request->tags);
+            }
+            // flash the message
+            session()->flash('success', 'Post created successfully');
+            // redirect the user
+            return redirect()->back();
         } catch (Exception $e) {
-            //Exception $e;
+            //Exception $th;
             session()->flash('error', $e->getMessage());
-            session()->flash('alert-class', 'alert-danger');
             return redirect()->back();
         }
-        //flash message
     }
 
     /**

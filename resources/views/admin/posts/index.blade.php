@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-4 col-lg-4">
                 <div class="widgetbar">
-                    <button class="btn btn-primary"><i class="ri-add-line align-middle mr-2"></i>ADD</button>
+                    <a href="{{ route('posts.create')}}" class="btn btn-primary"><i class="ri-add-line align-middle mr-2"></i>Create New</a>
                 </div>
             </div>
         </div>

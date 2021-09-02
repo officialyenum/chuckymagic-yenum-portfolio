@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Actions;
 
 use App\Actions\MediaAction;
 use App\Models\Media;
@@ -14,13 +14,13 @@ use Illuminate\Support\Str;
 
 class PostAction
 {
-    public static function create($request, $image)
+    public static function create($request)
     {
-        //get image;
-        return DB::transaction(function ($request, $image) {
-
+        // dd($request);
+        return DB::transaction(function () use ($request) {
             //create post;
             $post = new Post;
+
             $post->title = $request->title;
             $post->slug = Str::slug($request->title);
             $post->description = $request->description;
@@ -33,53 +33,17 @@ class PostAction
             $post->published_at = $request->published_at;
             $post->user_id = auth()->user()->id;
             $post->save();
-            //save post featured image;
-            $media = MediaAction::post($image, $post->id, $image->getClientOriginalName().' Image for'.$post->title.' Post');
-            $post->featured_image = $media->url;
-            $post->update();
 
-            // get post content images and save
-            $detail = $request->content;
-            libxml_use_internal_errors(true);
-            $dom = new \DOMDocument();
-            $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-            $images = $dom->getElementsByTagName('img');
-
-            //save post content media;
-            foreach ($images as $count => $image) {
-                $src = $image->getAttribute('src');
-                if (preg_match('/data:image/', $src)) {
-                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                    $imageFileName = $image->getClientOriginalName();
-                    $path = '/yenum/uploads/post-content/'.$imageFileName;
-                    $pathExists = Media::where('path', '=' ,$path)->exists();
-
-                    if(!$pathExists){
-                        $contentMedia = MediaAction::postContent($src, $post->id, $imageFileName.' Image for'.$post->title.' Post');
-                        $image->removeAttribute('src');
-                        $image->setAttribute('src', $contentMedia->url);
-                    }
-                }
-            }
-            // save post content
-            $post->content = $dom->savehtml();
-            $post->update();
-            // add tags to post
-            if ($request->tags) {
-                $post->tags()->attach($request->tags);
-            }
             return $post;
         });
     }
 
     public static function update($request, $id)
     {
-        return DB::transaction(function ($request, $id) {
+        return DB::transaction(function () use ($request, $id) {
 
             $post = POST::find($id);
-            //get image;
-            $image = $request->file('image');
-            //update post;
+
             $post->title = $request->title ?? $post->title;
             $post->slug = str_slug($request->title) ?? $post->slug;
             $post->description = $request->description ?? $post->description;
@@ -91,48 +55,54 @@ class PostAction
             $post->published_at = Carbon::parse($request->published_at) ?? $post->published_at;
             $post->update();
 
-            //save post featured image;
-            $imageFileName = $image->getClientOriginalName();
-            $path = '/yenum/uploads/post/'.$imageFileName;
-            $pathExists = Media::where('path', '=' ,$path)->exists();
-            // update if image exists
-            if(!$pathExists){
-                $media = MediaAction::post($image, $post->id, $image->getClientOriginalName().' Image for'.$post->title.' Post');
-                $post->featured_image = $media->url;
-                $post->update();
-            }
-
-            // get updated post content images and save
-            $detail = $request->content;
-            libxml_use_internal_errors(true);
-            $dom = new \DOMDocument();
-            $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-            $images = $dom->getElementsByTagName('img');
-
-            //save post content media;
-            foreach ($images as $count => $image) {
-                $src = $image->getAttribute('src');
-                if (preg_match('/data:image/', $src)) {
-                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
-                    $imageFileName = $image->getClientOriginalName();
-                    $path = '/yenum/uploads/post-content/'.$imageFileName;
-                    $pathExists = Media::where('path', '=' ,$path)->exists();
-
-                    if(!$pathExists){
-                        $contentMedia = MediaAction::postContent($src, $post->id, $imageFileName.' Image for'.$post->title.' Post');
-                        $image->removeAttribute('src');
-                        $image->setAttribute('src', $contentMedia->url);
-                    }
-                }
-            }
-            // save post content
-            $post->content = $dom->savehtml();
-            $post->update();
-            // add tags to post
-            if ($request->tags) {
-                $post->tags()->attach($request->tags);
-            }
             return $post;
         });
+    }
+
+    public static function updateMedia($url, $post)
+    {
+        return DB::transaction(function () use ($url, $post) {
+            $post->featured_image = $url;
+            $post->update();
+            return $post;
+        });
+    }
+
+    public static function updateContent($content, $post)
+    {
+        $detail = $content;
+        libxml_use_internal_errors(true);
+        $dom = new \DOMDocument();
+        $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+
+        //save post content media;
+        foreach ($images as $count => $image) {
+            $src = $image->getAttribute('src');
+            if (preg_match('/data:image/', $src)) {
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimeType = $groups['mime'];
+                $path = '/yenum/uploads/post-content/'.time() .'/' . uniqid('', true) . '.' . $mimeType;
+
+                $pathExists = Media::where('path', '=' ,$path)->exists();
+
+                if (!$pathExists) {
+                    $contentMedia = MediaAction::postContent($path, $src, $mimeType, $post->id,' Image for' . $post->title . ' Content Post');
+                    $image->removeAttribute('src');
+                    $image->setAttribute('src', $contentMedia->url);
+                }
+            }
+        }
+
+        return DB::transaction(function () use ($detail, $dom, $post) {
+            $detail = $dom->savehtml();
+            $post->content = $detail;
+            $post->update();
+        });
+    }
+
+    public static function updateTag($tags, $post)
+    {
+        $post->tags()->attach($tags);
     }
 }
