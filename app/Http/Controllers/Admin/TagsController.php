@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\MediaAction;
+use App\Actions\TagAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Tags\CreateTagRequest;
 use App\Http\Requests\Tags\UpdateTagRequest;
@@ -36,24 +38,35 @@ class TagsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateTagRequest $request)
+    public function store(Request $request, TagAction $tagAction, MediaAction $mediaAction)
     {
-        dd($request->content);
-        // upload the image
-        //$extension = $request->image->extension();
-        //$image = Storage::putFileAs('projects', $request->image, time().'.'.$extension);
-        $image = $request->file('image')->store(
-            'projects',
-            's3'
-        );
-        Tag::create([
-            'image' => $image,
-            'name' => $request->name
-        ]);
-
-        session()->flash('success', 'Tag Created Successfully');
-
-        return redirect(route('tags.index'));
+        try {
+            //validate input
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|max:255|unique:tags,title',
+                'description' => 'required|max:255',
+                'image' => 'required|image|mimes:jpg,jpeg,png|max:5120',
+            ]);
+            //check if validation fails
+            if ($validator->fails()) {
+                session()->flash('error', $validator->messages()->first());
+                return redirect()->back();
+            }
+            //get Featured image
+            $image = $request->file('image');
+            //create category
+            $tag = $tagAction->create($request);
+            //store category image
+            $media = $mediaAction->tag($image, $tag->id, $image->getClientOriginalName() . ' Image for ' . $tag->title . ' Tag');
+            //update featured image
+            $tagAction->updateMedia($media->url, $tag);
+            // flash the message
+            session()->flash('success', 'Tag created successfully');
+            return redirect()->back();
+        } catch (Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return redirect()->back();
+        }
     }
 
     /**
@@ -85,20 +98,35 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTagRequest $request, Tag $tag)
+    public function update(Request $request, Tag $tag, TagAction $tagAction, MediaAction $mediaAction)
     {
-        //method 1
-        //$category->name = $request->name;
-        //$category->save();
-
-        //method 2
-        $tag->update([
-            'name' => $request->name
-        ]);
-
-        session()->flash('success', 'Tag Updated Successfully');
-
-        return redirect(route('tags.index'));
+        try {
+            //validate input
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|max:255|unique:categories,title',
+                'description' => 'required|max:255',
+                'image' => 'required|image|mimes:jpg,jpeg,png|max:5120',
+            ]);
+            //check if validation fails
+            if ($validator->fails()) {
+                session()->flash('error', $validator->messages()->first());
+                return redirect()->back();
+            }
+            //get Featured image
+            $image = $request->file('image');
+            //update tag
+            $tag = $tagAction->update($request, $tag->id);
+            //store tag image
+            $media = $mediaAction->tag($image, $tag->id, $image->getClientOriginalName() . ' Image for ' . $tag->title . ' Tag');
+            //update featured image
+            $tagAction->updateMedia($media->url, $tag);
+            //flash the message
+            session()->flash('success', 'Tag Updated successfully');
+            return redirect()->back();
+        } catch (Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return redirect()->back();
+        }
     }
 
     /**
@@ -114,6 +142,7 @@ class TagsController extends Controller
 
             return redirect()->back();
         }
+        $tag->deleteImage();
         $tag->delete();
 
         session()->flash('success', 'Tag deleted sucessfully');

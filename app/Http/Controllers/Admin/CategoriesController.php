@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\CategoryAction;
+use App\Actions\MediaAction;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Http\Requests\Categories\CreateCategoryRequest;
@@ -36,24 +38,35 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(Request $request, CategoryAction $categoryAction, MediaAction $mediaAction)
     {
-        dd($request->content);
-        // upload the image
-        //$extension = $request->image->extension();
-        //$image = Storage::putFileAs('projects', $request->image, time().'.'.$extension);
-        $image = $request->file('image')->store(
-            'projects',
-            's3'
-        );
-        Category::create([
-            'image' => $image,
-            'name' => $request->name
-        ]);
-
-        session()->flash('success', 'Category Created Successfully');
-
-        return redirect(route('categories.index'));
+        try {
+            //validate input
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|max:255|unique:categories,title',
+                'description' => 'required|max:255',
+                'image' => 'required|image|mimes:jpg,jpeg,png|max:5120',
+            ]);
+            //check if validation fails
+            if ($validator->fails()) {
+                session()->flash('error', $validator->messages()->first());
+                return redirect()->back();
+            }
+            //get Featured image
+            $image = $request->file('image');
+            //create category
+            $category = $categoryAction->create($request);
+            //store category image
+            $media = $mediaAction->category($image, $category->id, $image->getClientOriginalName() . ' Image for ' . $category->title . ' Category');
+            //update featured image
+            $categoryAction->updateMedia($media->url, $category);
+            // flash the message
+            session()->flash('success', 'Category created successfully');
+            return redirect()->back();
+        } catch (Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return redirect()->back();
+        }
     }
 
     /**
@@ -85,20 +98,36 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(Request $request, Category $category, CategoryAction $categoryAction, MediaAction $mediaAction)
     {
-        //method 1
-        //$category->name = $request->name;
-        //$category->save();
 
-        //method 2
-        $category->update([
-            'name' => $request->name
-        ]);
-
-        session()->flash('success', 'Category Updated Successfully');
-
-        return redirect(route('categories.index'));
+        try {
+            //validate input
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|max:255|unique:categories,title',
+                'description' => 'required|max:255',
+                'image' => 'required|image|mimes:jpg,jpeg,png|max:5120',
+            ]);
+            //check if validation fails
+            if ($validator->fails()) {
+                session()->flash('error', $validator->messages()->first());
+                return redirect()->back();
+            }
+            //get Featured image
+            $image = $request->file('image');
+            //update category
+            $category = $categoryAction->update($request, $category->id);
+            //store category image
+            $media = $mediaAction->category($image, $category->id, $image->getClientOriginalName() . ' Image for ' . $category->title . ' Category');
+            //update featured image
+            $categoryAction->updateMedia($media->url, $category);
+            // flash the message
+            session()->flash('success', 'Category Updated successfully');
+            return redirect()->back();
+        } catch (Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return redirect()->back();
+        }
     }
 
     /**
@@ -109,11 +138,12 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        if ($category->projects->count() > 0) {
+        if ($category->posts->count() > 0) {
             session()->flash('error', 'category cannot be deleted because it has some posts');
 
             return redirect()->back();
         }
+        $category->deleteImage();
         $category->delete();
 
         session()->flash('success', 'Category deleted sucessfully');

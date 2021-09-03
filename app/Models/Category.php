@@ -9,6 +9,14 @@ class Category extends Model
 {
     protected $fillable = ['image','name'];
 
+    public function deleteImage()
+    {
+        //for local storage
+        // Storage::delete($this->image);
+        //for amazon s3 storage
+        Storage::disk('s3')->delete($this->image);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);
