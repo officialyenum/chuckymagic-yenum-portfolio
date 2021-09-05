@@ -7,7 +7,7 @@ use Mockery\Matcher\Subset;
 
 class Category extends Model
 {
-    protected $fillable = ['image','name'];
+    protected $fillable = ['image','title', 'description'];
 
     public function deleteImage()
     {

@@ -7,17 +7,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use HasApiTokens, Notifiable, SoftDeletes;
 
-
-    public const ROLE_SUPERADMIN = 1;
-    public const ROLE_ADMIN = 2;
-    public const ROLE_WRITER = 3;
-    public const ROLE_USER = 4;
-    public const VERFICATION = 1;
+    const ROLE_SUPERADMIN = 1;
+    const ROLE_ADMIN = 2;
+    const ROLE_WRITER = 3;
+    const ROLE_USER = 4;
+    const VERFICATION = 1;
     /**
      * The attributes that are mass assignable.
      *
@@ -28,6 +29,8 @@ class User extends Authenticatable
         'lastname',
         'firstname',
         'status',
+        'verified',
+        'verification_token',
         'email',
         'dob',
         'phone',
@@ -44,7 +47,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
+        'verification_token',
     ];
 
     /**
@@ -58,6 +63,10 @@ class User extends Authenticatable
         'dob' => 'datetime'
     ];
 
+    protected $table = 'users';
+    protected $date = ['deleted_at'];
+
+
     public function posts()
     {
         return $this->hasMany(Post::class);
@@ -70,32 +79,32 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->role_id == $this->ROLE_ADMIN;
+        return $this->role_id == User::ROLE_ADMIN;
     }
 
     public function isSuperAdmin()
     {
-        return $this->role_id == $this->ROLE_SUPERADMIN;
+        return $this->role_id == User::ROLE_SUPERADMIN;
     }
 
     public function isWriter()
     {
-        return $this->role_id == $this->ROLE_WRITER;
+        return $this->role_id == User::ROLE_WRITER;
     }
 
     public function isGuest()
     {
-        return $this->role_id == $this->ROLE_USER;
+        return $this->role_id == User::ROLE_USER;
     }
 
     public function isVerified()
     {
-        return $this->verified === $this->VERFICATION;
+        return $this->verified === User::VERFICATION;
     }
 
     public function isSubscribed()
     {
-        return $this->subscribed === $this->VERFICATION;
+        return $this->subscribed === User::VERFICATION;
     }
 
     public function role()
@@ -114,5 +123,10 @@ class User extends Authenticatable
     public function views()
     {
         return $this->hasMany(View::class, 'user_id');
+    }
+
+    public static function generateVerificationCode()
+    {
+        return Str::random(40);
     }
 }

@@ -69,7 +69,7 @@ class PostsTableSeeder extends Seeder
             'playstore_url' => '',
             'appstore_url' => '',
             'published_at' => now(),
-            'web_url' => 'https://afterworkchills.com',
+            'web_url' => '',
         ]);
 
         $tag1 = Tag::create([

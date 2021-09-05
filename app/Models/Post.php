@@ -67,7 +67,7 @@ class Post extends Model
     public function contentMedia()
     {
         # code...
-        return $this->hasMany(Media::class,'post_conten_id')->orderby('id','DESC');
+        return $this->hasMany(Media::class,'post_content_id')->orderby('id','DESC');
     }
 
     public function myPosts()

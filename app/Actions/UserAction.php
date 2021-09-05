@@ -32,6 +32,22 @@ class UserAction
         });
     }
 
+    public static function createJson($data)
+    {
+
+        DB::transaction(function () use ($data) {
+            $user = new User;
+            $user->username = $data['username'];
+            $user->firstname = $data['firstname'];
+            $user->lastname = $data['lastname'];
+            $user->email = $data['email'];
+            $user->role_id = 4;
+            $user->password = Hash::make($data['password']);
+            $user->save();
+            return $user;
+        });
+    }
+
     public static function update($request, $id)
     {
         return DB::transaction(function () use ($request, $id) {

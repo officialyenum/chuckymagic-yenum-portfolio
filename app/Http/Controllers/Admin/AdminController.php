@@ -29,6 +29,7 @@ class AdminController extends Controller
             # code...
             return view('admin.index');
         }
+        Auth::logout();
         return view('auth.login');
     }
 }

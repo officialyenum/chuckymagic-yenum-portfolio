@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 
@@ -83,6 +83,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 // Route::get('dice-single', 'DiceController@single')->name('dice.single');
 // Route::get('dice-multiplayer', 'DiceController@multiplayer')->name('dice.multiplayer');
 
-// Auth::routes();
+Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');

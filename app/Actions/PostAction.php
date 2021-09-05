@@ -45,7 +45,7 @@ class PostAction
             $post = POST::find($id);
 
             $post->title = $request->title ?? $post->title;
-            $post->slug = str_slug($request->title) ?? $post->slug;
+            $post->slug = Str::slug($request->title) ?? $post->slug;
             $post->description = $request->description ?? $post->description;
             $post->category_id = $request->category ?? $post->category_id;
             $post->github_url = $request->github_url ?? $post->github_url;

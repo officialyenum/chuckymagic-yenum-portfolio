@@ -17,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+Route::post('auth/register', 'Api\AuthController@register')->name('api.register');
+Route::post('auth/login', 'Api\AuthController@login')->name('api.login');
+Route::get('users/verify/{token}', 'Api\UsersController@verify')->name('api.verify');
+Route::get('users/{user}/resend', 'Api\UsersController@resend')->name('api.resend');
+Route::resource('users', 'Api\UsersController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
+Route::resource('posts', 'Api\PostsController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
+Route::resource('categories', 'Api\CategoriesController', ['as' => 'api', 'only' => ['index', 'show','update']]);
+Route::resource('tags', 'Api\TagsController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);

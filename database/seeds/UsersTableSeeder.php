@@ -33,26 +33,29 @@ class UsersTableSeeder extends Seeder
         if (!$user) {
             User::create([
                 'username' => 'superadmin',
-                'firstname' => 'Superadmin',
-                'lastname' => 'Yenum',
-                'email' => 'superadmin@yenum.dev',
-                'role_id' => 1,
-                'password' => Hash::make('password')
-            ]);
-            User::create([
-                'username' => 'admin',
                 'firstname' => 'Admin',
-                'lastname' => 'Yenum',
-                'email' => 'admin@yenum.dev',
-                'role_id' => 2,
-                'password' => Hash::make('password')
+                'lastname' => 'Super',
+                'email' => 'administrator@yenum.dev',
+                'role_id' => 1,
+                'email_verified_at' => now(),
+                'password' => Hash::make('administrator')
             ]);
             User::create([
-                'username' => 'yenum',
+                'username' => 'hybridcoder',
+                'firstname' => 'Coder',
+                'lastname' => 'Hybrid',
+                'email' => 'hybridcoder@yenum.dev',
+                'role_id' => 2,
+                'email_verified_at' => now(),
+                'password' => Hash::make('hybridcoder')
+            ]);
+            User::create([
+                'username' => 'officialyenum',
                 'firstname' => 'Yenum',
                 'lastname' => 'Opone',
                 'email' => 'oponechukwuyenum@gmail.com',
                 'role_id' => 3,
+                'email_verified_at' => now(),
                 'password' => Hash::make('password')
             ]);
 
@@ -64,6 +67,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'john@doe.com',
                 'phone' => '07064482201',
                 'role_id' => 4,
+                'email_verified_at' => now(),
                 'password' => Hash::make('password')
             ]);
         }

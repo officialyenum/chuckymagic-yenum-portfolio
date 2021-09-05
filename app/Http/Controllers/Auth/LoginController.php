@@ -44,7 +44,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 1) {
+            if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
                 # code...
                 return redirect()->route('admin.index');
             }

@@ -17,7 +17,7 @@ class UserQueries
 {
     public static function all()
     {
-        return User::latest()->paginate(50);
+        return User::all();
         // return DB::table('users')->get();
     }
 

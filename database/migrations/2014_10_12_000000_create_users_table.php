@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('firstname')->nullable();
             $table->boolean('status')->default(0);
             $table->boolean('verified')->default(0);
+            $table->string('verification_token')->nullable();
             $table->boolean('subscribed')->default(0);
             $table->string('email')->unique()->nullable();
             $table->timestamp('dob')->nullable();
