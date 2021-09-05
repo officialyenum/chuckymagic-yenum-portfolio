@@ -25,11 +25,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
-            # code...
-            return view('admin.index');
-        }
-        Auth::logout();
-        return view('auth.login');
+        return view('admin.index');
     }
 }

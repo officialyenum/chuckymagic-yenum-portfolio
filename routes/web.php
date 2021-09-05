@@ -22,7 +22,7 @@ Route::get('/welcome', 'HomeController@welcome')->name('welcome');
 
 //Home Page
 // Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/', 'Admin\AdminController@index')->name('admin.index');
+Route::get('/', 'Auth\LoginController@showLoginForm')->name('admin.login');
 Route::get('dashboard/posts/{post}', [HomeController::class, 'show'])->name('dashboard.show');
 Route::get('dashboard/categories/{category}', [HomeController::class, 'category'])->name('dashboard.category');
 Route::get('dashboard/tags/{tag}', [HomeController::class, 'tag'])->name('dashboard.tag');
@@ -31,7 +31,7 @@ Route::get('dashboard/tags/{tag}', [HomeController::class, 'tag'])->name('dashbo
 
 //Admin Panel
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    // Route::get('dashboard', 'Admin\AdminController@index')->name('admin.index');
+    Route::get('dashboard', 'Admin\AdminController@index')->name('admin.index');
     Route::resource('categories', 'Admin\CategoriesController');
     Route::resource('posts', 'Admin\PostsController');
     Route::resource('tags', 'Admin\TagsController');
