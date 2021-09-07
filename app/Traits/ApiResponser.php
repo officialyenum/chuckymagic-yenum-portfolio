@@ -27,19 +27,19 @@ trait ApiResponser
         if ($collection->isEmpty()) {
             return $this->successResponse(['data' => $collection], $code);
         }
-        // $collection = $this->filterData($collection);
-		// $collection = $this->sortData($collection);
+        // $collection = $this->filterData(collect($collection));
+		// $collection = $this->sortData(collect($collection));
 		$collection = $this->paginate($collection);
 		$collection = $this->cacheResponse($collection);
         return $this->successResponse($collection, $code);
     }
 
-    protected function showOne(JsonResource $model, $code = 200)
+    protected function showOne($model, $code = 200)
     {
         return $this->successResponse(['data' => $model], $code);
     }
 
-    protected function filterData(ResourceCollection $collection)
+    protected function filterData($collection)
 	{
 		foreach (request()->query() as $query => $value) {
 			$attribute = $query;
@@ -52,18 +52,18 @@ trait ApiResponser
 		return $collection;
 	}
 
-	protected function sortData(Collection $collection)
+	protected function sortData($collection)
 	{
 		if (request()->has('sort_by')) {
 			$attribute = request()->sort_by;
 
-			$collection = $collection->sortBy->{$attribute};
+			$collection = $collection->sortBy($attribute);
 		}
 
 		return $collection;
 	}
 
-    protected function paginate(ResourceCollection $collection)
+    protected function paginate($collection)
     {
         $page = LengthAwarePaginator::resolveCurrentPage();
         $perPage = 5;

@@ -47,7 +47,7 @@ class LoginController extends Controller
             if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
                 return redirect()->intended('admin.index');
             }
-            return redirect()->intended('home');
+            return redirect()->intended('admin.index');
         }
     }
 }

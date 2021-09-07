@@ -31,7 +31,7 @@ Route::get('dashboard/tags/{tag}', [HomeController::class, 'tag'])->name('dashbo
 
 //Admin Panel
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    Route::get('dashboard', 'Admin\AdminController@index')->name('admin.index');
+    Route::get('overview', 'Admin\AdminController@index')->name('admin.index');
     Route::resource('categories', 'Admin\CategoriesController');
     Route::resource('posts', 'Admin\PostsController');
     Route::resource('tags', 'Admin\TagsController');
