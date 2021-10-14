@@ -13,7 +13,7 @@ class AnonymousMessageAction
     {
         return DB::transaction(function () use ($request) {
             $anonymousMessage = new AnonymousMessage();
-
+            $anonymousMessage->published = 0;
             $anonymousMessage->content = $request['text'];
             $anonymousMessage->save();
 
