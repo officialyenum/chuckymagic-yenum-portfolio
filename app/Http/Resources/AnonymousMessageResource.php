@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TagResource extends JsonResource
+class AnonymousMessageResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,9 @@ class TagResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'acct_no' => $this->acct_no,
-            'acct_name' => $this->acct_name,
-            'bank_name' => $this->bank_name,
-            'bank_code' => $this->bank_code,
-            'bank_id' => $this->bank_id,
-            'user' => $this->user_id
+            'published' => $this->published,
+            'content' => $this->content,
+            'created_at' => $this->created_at,
         ];
     }
 }

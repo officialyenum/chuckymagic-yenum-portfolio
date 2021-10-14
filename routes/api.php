@@ -24,5 +24,8 @@ Route::get('users/verify/{token}', 'Api\UsersController@verify')->name('api.veri
 Route::get('users/{user}/resend', 'Api\UsersController@resend')->name('api.resend');
 Route::resource('users', 'Api\UsersController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
 Route::resource('posts', 'Api\PostsController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
-Route::resource('categories', 'Api\CategoriesController', ['as' => 'api', 'only' => ['index', 'show','update']]);
+Route::resource('categories', 'Api\CategoriesController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
 Route::resource('tags', 'Api\TagsController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
+
+Route::resource('anonymous-yellow', 'Api\AnonymousMessageController', ['as' => 'api']);
+Route::post('anonymous-yellow/{id}/publish', 'Api\AnonymousMessageController@publish')->name('api.anonymous.publish');
