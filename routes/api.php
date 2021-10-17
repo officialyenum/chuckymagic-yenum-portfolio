@@ -28,6 +28,8 @@ Route::resource('categories', 'Api\CategoriesController', ['as' => 'api', 'only'
 Route::resource('tags', 'Api\TagsController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
 
 Route::resource('anonymous-yellow', 'Api\AnonymousMessageController', ['as' => 'api']);
+
+Route::get('anonymous-yellow/{type}/all', 'Api\AnonymousMessageController@all')->name('api.anonymous.all');
 Route::post('anonymous-yellow/{id}/publish', 'Api\AnonymousMessageController@publish')->name('api.anonymous.publish');
 Route::post('anonymous-yellow/{id}/delete', 'Api\AnonymousMessageController@destroy')->name('api.anonymous.delete');
 Route::post('anonymous-yellow/unpublished/delete', 'Api\AnonymousMessageController@deleteUnpublished')->name('api.anonymous.deleteUnpublished');

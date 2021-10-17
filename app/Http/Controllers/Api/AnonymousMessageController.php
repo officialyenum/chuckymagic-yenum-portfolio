@@ -16,17 +16,42 @@ class AnonymousMessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(AnonymousMessageQueries $anonymousMessageQueries)
+    public function index($type, AnonymousMessageQueries $anonymousMessageQueries)
     {
+        $all =
+            $anonymousMessageQueries->all();
         $published =
             $anonymousMessageQueries->published();
         $unpublished = $anonymousMessageQueries->unpublished();
+        if ($type == 0) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Successful',
+                'all' => $all->count(),
+                'published' => $published->count(),
+                'unpublished' => $unpublished->count(),
+                'data' => AnonymousMessageResource::collection($unpublished)
+            ], 200);
+        }
+
+        if ($type == 1) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Successful',
+                'all' => $all->count(),
+                'published' => $published->count(),
+                'unpublished' => $unpublished->count(),
+                'data' => AnonymousMessageResource::collection($published)
+            ], 200);
+        }
+
         return response()->json([
             'status' => 'success',
             'message' => 'Successful',
+            'all' => $all->count(),
             'published' => $published->count(),
             'unpublished' => $unpublished->count(),
-            'data' => AnonymousMessageResource::collection($unpublished)
+            'data' => AnonymousMessageResource::collection($all)
         ], 200);
     }
 
@@ -121,6 +146,45 @@ class AnonymousMessageController extends Controller
         } catch (Exception $err) {
             return response()->json(['status' => 'error', 'message' => $err], 400);
         }
+    }
+
+    public function all($type, AnonymousMessageQueries $anonymousMessageQueries)
+    {
+        $all =
+            $anonymousMessageQueries->all();
+        $published =
+            $anonymousMessageQueries->published();
+        $unpublished = $anonymousMessageQueries->unpublished();
+        if ($type == 0) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Successful',
+                'all' => $all->count(),
+                'published' => $published->count(),
+                'unpublished' => $unpublished->count(),
+                'data' => AnonymousMessageResource::collection($unpublished)
+            ], 200);
+        }
+
+        if ($type == 1) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Successful',
+                'all' => $all->count(),
+                'published' => $published->count(),
+                'unpublished' => $unpublished->count(),
+                'data' => AnonymousMessageResource::collection($published)
+            ], 200);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Successful',
+            'all' => $all->count(),
+            'published' => $published->count(),
+            'unpublished' => $unpublished->count(),
+            'data' => AnonymousMessageResource::collection($all)
+        ], 200);
     }
 
     public function publish($id, AnonymousMessageAction $anonymousAction)
