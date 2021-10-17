@@ -29,3 +29,5 @@ Route::resource('tags', 'Api\TagsController', ['as' => 'api', 'only' => ['index'
 
 Route::resource('anonymous-yellow', 'Api\AnonymousMessageController', ['as' => 'api']);
 Route::post('anonymous-yellow/{id}/publish', 'Api\AnonymousMessageController@publish')->name('api.anonymous.publish');
+Route::post('anonymous-yellow/{id}/delete', 'Api\AnonymousMessageController@destroy')->name('api.anonymous.delete');
+Route::post('anonymous-yellow/unpublished/delete', 'Api\AnonymousMessageController@deleteUnpublished')->name('api.anonymous.deleteUnpublished');

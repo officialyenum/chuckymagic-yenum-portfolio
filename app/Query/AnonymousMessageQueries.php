@@ -24,4 +24,9 @@ class AnonymousMessageQueries
     {
         return AnonymousMessage::where('published', AnonymousMessage::NOT_PUBLISHED)->get();
     }
+
+    public static function published()
+    {
+        return AnonymousMessage::where('published', AnonymousMessage::PUBLISHED)->get();
+    }
 }

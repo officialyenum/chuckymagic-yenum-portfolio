@@ -18,11 +18,15 @@ class AnonymousMessageController extends Controller
      */
     public function index(AnonymousMessageQueries $anonymousMessageQueries)
     {
-        $data = $anonymousMessageQueries->unpublished();
+        $published =
+            $anonymousMessageQueries->published();
+        $unpublished = $anonymousMessageQueries->unpublished();
         return response()->json([
             'status' => 'success',
             'message' => 'Successful',
-            'data' => AnonymousMessageResource::collection($data)
+            'published' => $published->count(),
+            'unpublished' => $unpublished->count(),
+            'data' => AnonymousMessageResource::collection($unpublished)
         ], 200);
     }
 
@@ -105,9 +109,18 @@ class AnonymousMessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, AnonymousMessageAction $anonymousAction)
     {
-        //
+        try {
+            $data = $anonymousAction->delete($id);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Successfully Deleted Message',
+                'data' => new AnonymousMessageResource($data)
+            ], 200);
+        } catch (Exception $err) {
+            return response()->json(['status' => 'error', 'message' => $err], 400);
+        }
     }
 
     public function publish($id, AnonymousMessageAction $anonymousAction)
@@ -117,6 +130,21 @@ class AnonymousMessageController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Successfully Published',
+                'data' => new AnonymousMessageResource($data)
+            ], 200);
+        } catch (Exception $err) {
+            return response()->json(['status' => 'error', 'message' => $err], 400);
+        }
+    }
+
+    public function deletePublished(AnonymousMessageAction $anonymousAction, AnonymousMessageQueries $anonymousMessageQueries)
+    {
+        try {
+            $published = $anonymousMessageQueries->published();
+            $data = $anonymousAction->deletePublished();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Successfully Deleted  ' . $published->count() . ' Published Messages',
                 'data' => new AnonymousMessageResource($data)
             ], 200);
         } catch (Exception $err) {
