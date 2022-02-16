@@ -1,8 +1,11 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,22 +17,22 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         Role::create([
-            'id'=> 1,
-            'name'=> 'Super Admin',
+            'id' => 1,
+            'name' => 'Super Admin',
         ]);
         Role::create([
-            'id'=> 2,
-            'name'=> 'Admin',
+            'id' => 2,
+            'name' => 'Admin',
         ]);
         Role::create([
-            'id'=> 3,
-            'name'=> 'Writer',
+            'id' => 3,
+            'name' => 'Writer',
         ]);
         Role::create([
-            'id'=> 4,
-            'name'=> 'User',
+            'id' => 4,
+            'name' => 'User',
         ]);
-        $user = User::where('email','admin@yenum.dev')->first();
+        $user = User::where('email', 'admin@yenum.dev')->first();
         if (!$user) {
             User::create([
                 'username' => 'superadmin',

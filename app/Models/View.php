@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class View extends Model
 {
-    protected $fillable = ['post_id','user_id', 'count'];
+    use HasFactory;
+    protected $fillable = ['post_id', 'user_id', 'count'];
 
     public function post()
     {
-        return $this->belongsTo(Post::class ,'post_id');
+        return $this->belongsTo(Post::class, 'post_id');
     }
 
     public function user()

@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Tag;
-use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 class TagFactory extends Factory
@@ -24,11 +24,9 @@ class TagFactory extends Factory
     {
         return [
             'image' => 'https://yenum.s3.us-east-2.amazonaws.com/projects/project1.jpg',
-            'title' => $this->faker->title(),
-            'slug' => Str::slug($this->faker->title()),
-            'description' => $this->faker->sentence(random_int(6,12))
+            'title' => $this->faker->name(),
+            'slug' => Str::slug($this->faker->name()),
+            'description' => $this->faker->sentence(random_int(6, 12))
         ];
     }
 }
-
-

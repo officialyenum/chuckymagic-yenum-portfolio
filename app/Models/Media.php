@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
+    use HasFactory;
     protected $fillable = ['mimeType','path','url','post_id','category_id','tag_id', 'post_content_id'];
 
     public function user()

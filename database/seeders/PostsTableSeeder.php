@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
@@ -15,7 +17,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::where('email','admin@yenum.dev')->first();
+        $user = User::where('email', 'admin@yenum.dev')->first();
 
         $category1 = Category::create([
             'image' => 'img/categories/code.jpeg',

@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
@@ -34,12 +36,12 @@ class DatabaseSeeder extends Seeder
         $tagsQuantity = 50;
         $this->call(UsersTableSeeder::class);
 
-        factory(User::class, $usersQuantity)->create();
-        factory(Category::class, $categoriesQuantity)->create();
-        factory(Tag::class, $tagsQuantity)->create();
-        factory(Post::class, $postsQuantity)->create()->each(
-            function($post) {
-                $tags = Tag::all()->random(mt_rand(1,5))->pluck('id');
+        User::factory()->count($usersQuantity)->create();
+        Category::factory()->count($categoriesQuantity)->create();
+        Tag::factory()->count($tagsQuantity)->create();
+        Post::factory()->count($postsQuantity)->create()->each(
+            function ($post) {
+                $tags = Tag::all()->random(mt_rand(1, 5))->pluck('id');
                 $post->tags()->attach($tags);
             }
         );
