@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->count($usersQuantity)->create();
         Category::factory()->count($categoriesQuantity)->create();
-        Tag::factory()->count($tagsQuantity)->create();
+        // Tag::factory()->count($tagsQuantity)->create();
         Post::factory()->count($postsQuantity)->create()->each(
             function ($post) {
                 $tags = Tag::all()->random(mt_rand(1, 5))->pluck('id');
