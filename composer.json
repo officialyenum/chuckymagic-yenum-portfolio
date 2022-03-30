@@ -12,12 +12,14 @@
         "aws/aws-sdk-php-laravel": "~3.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^8.0",
         "laravel/passport": "^10.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "symfony/http-client": "^6.0",
+        "symfony/mailgun-mailer": "^6.0",
         "te7a-houdini/laravel-trix": "^2.0"
     },
     "require-dev": {

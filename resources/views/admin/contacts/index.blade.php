@@ -5,17 +5,17 @@
     <div class="breadcrumbbar">
         <div class="row align-items-center">
             <div class="col-md-8 col-lg-8">
-                <h4 class="page-title">Categories Management</h4>
+                <h4 class="page-title">Tags Management</h4>
                 <div class="breadcrumb-list">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                        <li class="breadcrumb-item active" aria-current="page">Tags</li>
                     </ol>
                 </div>
             </div>
             <div class="col-md-4 col-lg-4">
                 <div class="widgetbar">
-                    <a href="{{ route('categories.create')}}" class="btn btn-success float-right my-2">Add Category </a>
+                    <button class="btn btn-primary"><i class="ri-add-line align-middle mr-2"></i>ADD</button>
                 </div>
             </div>
         </div>
@@ -32,17 +32,17 @@
 @endsection
 
 @section('rightbar-content')
-    @include('admin.tables.Category-table',['title'=> 'Categories','categories' => $categories])
+    @include('admin.tables.contact-table',['title'=> 'Contacts','contacts' => $contacts])
 
 
     <div class="modal fade" id="deleteModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-        <form action="" method="POST" id="deleteCategoryForm">
+        <form action="" method="POST" id="deleteTagForm">
                 @csrf
                 @method('DELETE')
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Delete Category</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Delete Tag</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -80,10 +80,11 @@
     <script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/js/custom/custom-table-datatable.js') }}"></script>
+
     <script>
         function handleDelete(id) {
-            var form = document.getElementById('deleteCategoryForm')
-            form.action = '/admin/categories/' + id
+            var form = document.getElementById('deleteContactForm')
+            form.action = '/contacts/' + id
             console.log('deleting', form);
 
             $('#deleteModal').modal('show')
@@ -91,4 +92,5 @@
     </script>
 
 @endsection
+
 

@@ -81,7 +81,7 @@ class AnonymousMessageController extends Controller
                 'data' => new AnonymousMessageResource($data)
             ], 200);
         } catch (Exception $err) {
-            return response()->json(['status' => 'error', 'message' => $err], 400);
+            return response()->json(['status' => 'error', 'message' => $err], 500);
         }
     }
 

@@ -64,7 +64,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     //Category Management
     Route::resource('categories', 'Admin\CategoriesController');
     //Tag Management
-    Route::resource('categories', 'Admin\TagsController');
+    Route::resource('tags', 'Admin\TagsController');
+    //Contact Management
+    Route::resource('contact', 'Admin\ContactController');
+    //Anonymous Management
+    Route::resource('anonymous-yellow', 'Admin\AnonymousMessageController');
+    Route::get('anonymous-yellow/published', 'Admin\AnonymousMessageController@published')->name('anonymous-yellow.published');
+    Route::get('anonymous-yellow/unpublished', 'Admin\AnonymousMessageController@unpublished')->name('anonymous-yellow.unpublished');
+    Route::post('anonymous-yellow/{id}/publish', 'Admin\AnonymousMessageController@publish')->name('anonymous-yellow.publish');
+    Route::post('anonymous-yellow/unpublished/delete', 'Admin\AnonymousMessageController@deleteUnpublished')->name('anonymous-yellow.deleteUnpublished');
+
     //Media Management
     Route::resource('media', 'Admin\MediaController');
 });

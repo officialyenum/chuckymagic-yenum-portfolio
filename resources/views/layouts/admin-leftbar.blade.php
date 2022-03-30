@@ -44,7 +44,8 @@
                         <i class="ri-pencil-ruler-2-line"></i><span>Categories</span><i class="ri-arrow-right-s-line"></i>
                     </a>
                     <ul class="vertical-submenu">
-                        <li><a href="#">Image Crop</a></li>
+                        <li><a href="{{ route('categories.index')}}">All</a></li>
+                        <li><a href="{{ route('categories.create')}}">Create</a></li>
                     </ul>
                 </li>
                 <li>
@@ -52,18 +53,25 @@
                         <i class="ri-apps-line"></i><span>Tags</span><i class="ri-arrow-right-s-line"></i>
                     </a>
                     <ul class="vertical-submenu">
-                        <li><a href="{{url('/apps-calender')}}">Calender</a></li>
-                        <li><a href="{{url('/apps-chat')}}">Chat</a></li>
+                        <li><a href="{{ route('tags.index')}}">All</a></li>
+                        <li><a href="{{ route('tags.create')}}">Create</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javaScript:void();">
+                        <i class="ri-apps-line"></i><span>Messages</span><i class="ri-arrow-right-s-line"></i>
+                    </a>
+                    <ul class="vertical-submenu">
+                        <li><a href="{{ route('contact.index')}}">All</a></li>
                         <li>
-                            <a href="javaScript:void();">Email<i class="ri-arrow-right-s-line"></i></a>
+                            <a href="javaScript:void();">Anonymous Message<i class="ri-arrow-right-s-line"></i></a>
                             <ul class="vertical-submenu">
-                                <li><a href="{{url('/apps-email-inbox')}}">Inbox</a></li>
-                                <li><a href="{{url('/apps-email-open')}}">Open</a></li>
-                                <li><a href="{{url('/apps-email-compose')}}">Compose</a></li>
+                                <li><a href="{{ route('anonymous-yellow.index')}}">All</a></li>
+                                <li><a href="{{ route('anonymous-yellow.published')}}">Published</a></li>
+                                <li><a href="{{ route('anonymous-yellow.unpublished')}}">Unpublished</a></li>
                             </ul>
                         </li>
-                        <li><a href="{{url('/apps-kanban-board')}}">Kanban Board</a></li>
-                        <li><a href="{{url('/apps-onboarding-screens')}}">Onboarding Screens</a></li>
                     </ul>
                 </li>
                 <li>
@@ -71,8 +79,7 @@
                         <i class="ri-file-copy-2-line"></i><span>Media</span><i class="ri-arrow-right-s-line"></i>
                     </a>
                     <ul class="vertical-submenu">
-                        <li><a href="{{url('/form-inputs')}}">Basic Elements</a></li>
-                        <li><a href="{{url('/form-groups')}}">Groups</a></li>
+                        <li><a href="{{ route('media.index')}}">All</a></li>
                     </ul>
                 </li>
                 <li>
@@ -80,8 +87,8 @@
                         <i class="ri-pie-chart-line"></i><span>Settings</span><i class="ri-arrow-right-s-line"></i>
                     </a>
                     <ul class="vertical-submenu">
-                        <li><a href="{{url('/chart-apex')}}">Apex</a></li>
-                        <li><a href="{{url('/chart-c3')}}">C3</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Stats</a></li>
                     </ul>
                 </li>
             </ul>

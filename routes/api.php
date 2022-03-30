@@ -23,9 +23,10 @@ Route::post('auth/login', 'Api\AuthController@login')->name('api.login');
 Route::get('users/verify/{token}', 'Api\UsersController@verify')->name('api.verify');
 Route::get('users/{user}/resend', 'Api\UsersController@resend')->name('api.resend');
 Route::resource('users', 'Api\UsersController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
-Route::resource('posts', 'Api\PostsController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
-Route::resource('categories', 'Api\CategoriesController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
-Route::resource('tags', 'Api\TagsController', ['as' => 'api', 'only' => ['index', 'show', 'update']]);
+Route::resource('posts', 'Api\PostsController', ['as' => 'api', 'only' => ['index', 'show', 'store', 'update']]);
+Route::resource('categories', 'Api\CategoriesController', ['as' => 'api', 'only' => ['index', 'show', 'store', 'update']]);
+Route::resource('tags', 'Api\TagsController', ['as' => 'api', 'only' => ['index', 'show', 'store', 'update']]);
+Route::resource('contact', 'Api\ContactController', ['as' => 'api', 'only' => ['index', 'show', 'store', 'update']]);
 
 Route::resource('anonymous-yellow', 'Api\AnonymousMessageController', ['as' => 'api']);
 
