@@ -11,6 +11,7 @@
                     <th>Email</th>
                     <th>Project</th>
                     <th>Message</th>
+                    <th>Day Sent</th>
                     <th></th>
                 </thead>
                 <tbody>
@@ -30,6 +31,9 @@
                             </td>
                             <td>
                                 {{ $contact->message }}
+                            </td>
+                            <td>
+                                {{ $contact->created_at }}
                             </td>
                             <td>
                                 <button class="btn btn-danger float-right ml-1" onclick="handleDelete({{ $contact->id }})">Delete</button>

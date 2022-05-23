@@ -5,11 +5,11 @@
     <div class="breadcrumbbar">
         <div class="row align-items-center">
             <div class="col-md-8 col-lg-8">
-                <h4 class="page-title">Tags Management</h4>
+                <h4 class="page-title">Contacts Management</h4>
                 <div class="breadcrumb-list">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tags</li>
+                        <li class="breadcrumb-item active" aria-current="page">Contacts</li>
                     </ol>
                 </div>
             </div>
