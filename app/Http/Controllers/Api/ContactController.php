@@ -53,7 +53,7 @@ class ContactController extends Controller
         try {
             $data = $contactAction->create($request);
             if ($data) {
-                Mail::to("oponechukwuyenum@gmail.com")->queue(new MessageMe($data));
+                Mail::to("oponechukwuyenum@gmail.com")->send(new MessageMe($data));
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Sent Successfully',
