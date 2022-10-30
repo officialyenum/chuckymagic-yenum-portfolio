@@ -44,7 +44,7 @@ return [
         ],
 
         'smtp' => [
-            'transport' => 'smtp',
+            'transport' => env('MAIL_DRIVER', 'smtp'),
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
@@ -57,9 +57,13 @@ return [
         'ses' => [
             'transport' => 'ses',
         ],
+        // 'mailgun' => [
+        //     'transport' => 'mailgun',
+        // ],
 
         'mailgun' => [
-            'transport' => 'mailgun',
+            'domain' => env('MAILGUN_DOMAIN'),
+            'secret' => env('MAILGUN_SECRET'),
         ],
 
         'postmark' => [

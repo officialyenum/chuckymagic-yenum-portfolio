@@ -18,8 +18,9 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "symfony/http-client": "^6.0",
-        "symfony/mailgun-mailer": "^6.0",
+        "symfony/http-client": "^6.1",
+        "symfony/mailer": "^6.1",
+        "symfony/mailgun-mailer": "^6.1",
         "te7a-houdini/laravel-trix": "^2.0"
     },
     "require-dev": {

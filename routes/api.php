@@ -1,6 +1,9 @@
 <?php
 
+use App\Mail\MessageMe;
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +20,20 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+Route::get('test', function ()
+{
+    $data = Contact::find(1);
+    if ($data) {
+        $email = "oponechukwuyenum@gmail.com";
+        Mail::to($email)->queue(new MessageMe($data));
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Sent Successfully',
+            'data' => $data
+        ], 200);
+    }
+});
 
 Route::post('auth/register', 'Api\AuthController@register')->name('api.register');
 Route::post('auth/login', 'Api\AuthController@login')->name('api.login');

@@ -9,6 +9,7 @@ use App\Http\Resources\ContactResource;
 use App\Mail\MessageMe;
 use App\Models\Contact;
 use App\Query\ContactQueries;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -53,7 +54,8 @@ class ContactController extends Controller
         try {
             $data = $contactAction->create($request);
             if ($data) {
-                Mail::to("oponechukwuyenum@gmail.com")->send(new MessageMe($data));
+                $email = "oponechukwuyenum@gmail.com";
+                $mail = Mail::to($email)->queue(new MessageMe($data));
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Sent Successfully',
@@ -63,6 +65,7 @@ class ContactController extends Controller
                 throw new Exception("Error Processing Request", 1);
             }
         } catch (Exception $err) {
+            Log::error($err);
             return response()->json(['status' => 'error', 'message' => $err], 500);
         }
     }
